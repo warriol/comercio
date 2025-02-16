@@ -94,11 +94,6 @@
 
     document.getElementById('buscarForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        // existing code...
-    });
-
-    document.getElementById('buscarForm').addEventListener('submit', function(event) {
-        event.preventDefault();
         buscarClientes();
     });
     function buscarClientes() {
@@ -132,7 +127,7 @@
                 const resultTableBody = resultTable.querySelector('tbody');
 
                 if (data.length === 0) {
-                    responseMessage.innerText = 'No hubo resultados';
+                    responseMessage.innerText = '<div class="alert alert-warning">No se encontraron clientes.</div>';
                     resultTable.style.display = 'none';
                 } else {
                     responseMessage.innerText = '';
