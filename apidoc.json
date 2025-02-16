@@ -1,0 +1,14 @@
+{
+  "name": "Comercio API",
+  "version": "1.0.0",
+  "description": "Documentación de la API",
+  "title": "Documentación de la API",
+  "url": "https://localhost/comercio/backend",
+  "sampleUrl": false,
+  "template": {
+    "withCompare": false,
+    "withGenerator": false
+  },
+  "input": "./backend/class",
+  "output": "./apidoc"
+}
