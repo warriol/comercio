@@ -68,7 +68,7 @@
         let telefono = document.getElementById('telefono').value;
 
         // Construir la URL con parámetros GET
-        let url = new URL('http://localhost/comercio/backend/vendedores/listar.php');
+        let url = new URL('https://localhost/comercio/backend/vendedores/listar.php');
         const params = {};
         if (nombre) params.nombre = nombre;
         if (telefono) params.telefono = telefono;
@@ -85,7 +85,7 @@
             .then(data => {
                 const responseMessage = document.getElementById('responseMessage');
                 const resultTable = document.getElementById('resultTable');
-                const resultTableBody = resultTable.getElementsByTagName('tbody');
+                const resultTableBody = resultTable.querySelector('tbody');
 
                 if (data.length === 0) {
                     responseMessage.innerHTML = `<div class="alert alert-warning">No se encontraron vendedores.</div>`;
@@ -102,7 +102,7 @@
                             <td>${vendedor.nombre}</td>
                             <td>${vendedor.telefono}</td>
                             <td>
-                                <button class="btn btn-danger" onclick="confirmDelete(${vendedor.idVendedor})">Eliminar</button>
+                                <a href="update.php?idVendedor=${vendedor.idVendedor}" class="btn btn-primary">Editar</a>
                             </td>
                         `;
                         resultTableBody.appendChild(row);

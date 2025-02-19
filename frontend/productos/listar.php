@@ -123,7 +123,7 @@
                 const resultTableBody = resultTable.querySelector('tbody');
 
                 if (data.length === 0) {
-                    responseMessage.innerText = 'No hubo resultados';
+                    responseMessage.innerHTML = '<div class="alert alert-warning">No se encontraron productos.</div>';
                     resultTable.style.display = 'none';
                 } else {
                     responseMessage.innerText = '';

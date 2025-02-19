@@ -51,16 +51,21 @@ apidoc -i backend -o apidoc
 # END POINTS
 Ver documentación de la API en la ruta /apidoc
 
-# Base de datos
+# Base de datos: micomercio
 
 ``` MYSQL
+-- Crear la base de datos
+CREATE DATABASE micomercio;
+USE micomercio;
+
 -- Tabla Cliente
 CREATE TABLE Clientes (
     idCliente INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
     telefono VARCHAR(20),
-    correo VARCHAR(255)
+    correo VARCHAR(255),
+    activo BOOLEAN NOT NULL DEFAULT TRUE
 );
 
 -- Tabla Vendedor
@@ -76,7 +81,9 @@ CREATE TABLE Productos (
     nombre VARCHAR(255) NOT NULL,
     imagen VARCHAR(255),
     precio DECIMAL(10, 2) NOT NULL,
-    tipo ENUM('por kilo', 'por unidad') NOT NULL
+    tipo ENUM('por kilo', 'por unidad', 'oferta', 'paquete', '100', 'grande', 'chico', 'mediano', '28cm') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+    precioEsp DECIMAL(10, 2) NOT NULL,
+    activo TINYINT(1) NOT NULL DEFAULT '1'
 );
 
 -- Tabla Venta
@@ -141,14 +148,4 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `email`, `password`, `nombre`) VALUES
 (0, 'warriol@gmail.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 'Wilson Denis');
-
-
---
--- Actualización de tabla
---
-
-ALTER TABLE `clientes` ADD `activo` BOOLEAN NOT NULL DEFAULT TRUE AFTER `correo`;
-ALTER TABLE `productos` CHANGE `tipo` `tipo` ENUM('por kilo','por unidad', 'oferta', 'paquete', '100','grande','chico','mediano','28cm') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
-ALTER TABLE `productos` ADD `precioEsp` DECIMAL(10,2) NOT NULL AFTER `precio`;
-ALTER TABLE `productos` ADD `activo` TINYINT(1) NOT NULL DEFAULT '1' AFTER `tipo`;    
 ```

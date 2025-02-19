@@ -81,8 +81,6 @@
             .then(response => {
                 if (response.ok) {
                     buscarClientes();
-                    //document.getElementById('buscarForm').dispatchEvent(new Event('submit'));
-                    //document.getElementById('responseMessage').innerText = `<div class="alert alert-success">Se eliminó al usuario correctamente.</div>`;
                 } else {
                     alert('Error al eliminar el cliente');
                 }
@@ -127,7 +125,7 @@
                 const resultTableBody = resultTable.querySelector('tbody');
 
                 if (data.length === 0) {
-                    responseMessage.innerText = '<div class="alert alert-warning">No se encontraron clientes.</div>';
+                    responseMessage.innerHTML = '<div class="alert alert-warning">No se encontraron clientes.</div>';
                     resultTable.style.display = 'none';
                 } else {
                     responseMessage.innerText = '';

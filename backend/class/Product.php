@@ -49,6 +49,19 @@ class Product extends \Config
         }
     }
 
+    /**
+     * @api {get} /productos/listar.php Listar productos
+     * @apiName listar_producto
+     * @apiGroup Productos
+     * @apiVersion 0.1.0
+     * @apiDescription Lista todos los productos
+     *
+     * @apiSuccess {String} JSON con los productos
+     *
+     * @apiError {String} Error: {mensaje de error}
+     *
+     * @apiSampleRequest /productos/listar.php
+     */
     public function listar_producto_todos()
     {
         try {

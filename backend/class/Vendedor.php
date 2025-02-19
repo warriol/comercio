@@ -103,4 +103,17 @@ class Vendedor extends \Config
         $resultados = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return json_encode($resultados);
     }
+
+    public function getById(mixed $idVendedor)
+    {
+        try {
+            $stmt = $this->conn->prepare('SELECT * FROM vendedores WHERE idVendedor = :idVendedor');
+            $stmt->bindParam(':idVendedor', $idVendedor);
+            $stmt->execute();
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+            return json_encode($result);
+        } catch (\PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
 }
