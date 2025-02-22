@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Cliente</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php
+$titulo = 'Crear Cliente';
+include_once '../vendor/inicio.html';
+?>
     <div class="container mt-5">
-        <h2>Crear Cliente</h2>
         <form id="clienteForm">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
@@ -30,7 +24,7 @@
         </form>
         <div id="responseMessage" class="mt-3"></div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         document.getElementById('clienteForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -58,5 +52,7 @@
             });
         });
     </script>
-</body>
-</html>
+
+<?php
+include_once '../vendor/fin.html';
+?>

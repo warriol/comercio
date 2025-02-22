@@ -116,4 +116,25 @@ class Vendedor extends \Config
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    public function update_vendedor(mixed $idVendedor, mixed $nombre, mixed $telefono)
+    {
+        $retorno = [
+            'header' => 'HTTP/1.1 200 Vendedor actualizado correctamente',
+            'message' => 'Vendedor actualizado correctamente'
+        ];
+        try {
+            $stmt = $this->conn->prepare('UPDATE vendedores SET nombre = :nombre, telefono = :telefono WHERE idVendedor = :idVendedor');
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':telefono', $telefono);
+            $stmt->bindParam(':idVendedor', $idVendedor);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            $retorno = [
+                'header' => 'HTTP/1.1 401 Error en la consulta',
+                'message' => 'Error: ' . $e->getMessage()
+            ];
+        }
+        return $retorno;
+    }
 }

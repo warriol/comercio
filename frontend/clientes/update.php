@@ -6,15 +6,9 @@ if (isset($_GET["idCliente"])) {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Cliente</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php
+include_once '../vendor/inicio.html';
+?>
 <div class="container mt-5">
     <h2>Editar Cliente</h2>
     <form id="editarClienteForm">
@@ -38,7 +32,7 @@ if (isset($_GET["idCliente"])) {
     </form>
     <div id="responseMessage" class="mt-3"></div>
 </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 
     // Obtener el cliente por ID
@@ -87,5 +81,6 @@ if (isset($_GET["idCliente"])) {
         });
     });
 </script>
-</body>
-</html>
+<?php
+include_once '../vendor/fin.html';
+?>

@@ -6,15 +6,9 @@ if (isset($_GET['idVendedor'])) {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Vendedor</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php
+include_once '../vendor/inicio.html';
+?>
 <div class="container mt-5">
     <h2>Actualizar Vendedor</h2>
     <form id="vendedorForm">
@@ -30,10 +24,8 @@ if (isset($_GET['idVendedor'])) {
     </form>
     <div id="responseMessage" class="mt-3"></div>
 </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-
         fetch(`https://localhost/comercio/backend/vendedores/getById.php?idVendedor=<?= $idVendedor; ?>`)
             .then(response => response.json())
             .then(data => {
@@ -46,11 +38,37 @@ if (isset($_GET['idVendedor'])) {
             });
 
         document.getElementById('vendedorForm').addEventListener('submit', function(event) {
-            event.preventDefault();// seguir aca
+            event.preventDefault();
 
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+
+            // Construir la URL con parametros GET
+            const url = new URL('https://localhost/comercio/backend/vendedores/update.php');
+            const params = {};
+            params.idVendedor = <?= $idVendedor; ?>;
+            params.nombre = nombre;
+            params.telefono = telefono;
+            url.search = new URLSearchParams(params).toString();
+
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                })
+                .catch(error => {
+                    document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al actualizar el vendedor.</div>`;
+                });
 
         });
-    });
+
 </script>
-</body>
-</html>
+<?php
+include_once '../vendor/fin.html';
+?>
