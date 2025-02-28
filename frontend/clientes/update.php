@@ -7,6 +7,7 @@ if (isset($_GET["idCliente"])) {
 }
 ?>
 <?php
+$titulo = 'Actualizar Cliente';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">

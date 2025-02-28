@@ -1,4 +1,5 @@
 <?php
+$titulo = 'Listar Pedidos';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">

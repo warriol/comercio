@@ -1,8 +1,12 @@
 <?php
+$titulo = 'Crear Pedido para Clientes';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">
-    <h2 class="bg-primary">Crear Pedido</h2>
+    <div class="alert alert-primary" role="alert">
+        Crear Pedido
+    </div>
+
     <form id="pedidoForm">
         <div class="row">
             <div class="form-group col-6">

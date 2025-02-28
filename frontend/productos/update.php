@@ -7,6 +7,7 @@ if (isset($_GET["idProducto"])) {
 }
 ?>
 <?php
+$titulo = 'Acualizar Productos';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">

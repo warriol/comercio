@@ -178,7 +178,110 @@
                 <div class="container-fluid" id="contendorPrincipal">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Accesos rápidos a: <em>VENTAS</em></h1>
+
+                    <div class="card-deck mb-4">
+                        <div class="card text-center bg-secondary text-white" style="width: 18rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="img/clientes.png" alt="Icon" width="150" height="150" class="mr-3">
+                                    <div>
+                                        <h5 class="card-title">Crear Venta Para CLientes</h5>
+                                        <p class="card-text">Crea un venta con precios generales para clientes.</p>
+                                    </div>
+                                </div>
+                                <a href="ventas/crearClientes.php" class="btn btn-primary btn-lg btn-block">Ventas Clientes</a>
+                            </div>
+                        </div>
+
+                        <div class="card text-center bg-secondary text-white" style="width: 18rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="img/comercio.png" alt="Icon" width="150" height="150" class="mr-3">
+                                    <div>
+                                        <h5 class="card-title">Crear Venta Para Comercio</h5>
+                                        <p class="card-text">Crea un ventas con precios especiales para comercio.</p>
+                                    </div>
+                                </div>
+                                <a href="ventas/crearComercio.php" class="btn btn-primary btn-lg btn-block">Ventas Comercio</a>
+                            </div>
+                        </div>
+
+                        <div class="card text-center border-info" style="width: 18rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="img/lista.png" alt="Icon" width="150" height="150" class="mr-3">
+                                    <div>
+                                        <h5 class="card-title">Listar Ventas</h5>
+                                        <p class="card-text">Ver lista de ventas.</p>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-outline-info btn-lg btn-block" id="listarVentasHoyBtn">Listar Ventas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Accesos rápidos a: <em>PEDIDOS</em></h1>
+
+                    <div class="card-deck mb-4">
+                        <div class="card text-center bg-primary text-white" style="width: 18rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="img/clientes.png" alt="Icon" width="150" height="150" class="mr-3">
+                                    <div>
+                                        <h5 class="card-title">Crear Pedido Para CLientes</h5>
+                                        <p class="card-text">Crea un pedido con precios generales para clientes.</p>
+                                    </div>
+                                </div>
+                                <a href="pedidos/crearClientes.php" class="btn btn-warning btn-lg btn-block">Pedidos Clientes</a>
+                            </div>
+                        </div>
+
+                        <div class="card text-center bg-primary text-white" style="width: 18rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="img/comercio.png" alt="Icon" width="150" height="150" class="mr-3">
+                                    <div>
+                                        <h5 class="card-title">Crear Pedido Para Comercio</h5>
+                                        <p class="card-text">Crea un pedido con precios especiales para comercio.</p>
+                                    </div>
+                                </div>
+                                <a href="pedidos/crearComercio.php" class="btn btn-warning btn-lg btn-block">Pedidos Comercio</a>
+                            </div>
+                        </div>
+
+                        <div class="card text-center border-info" style="width: 18rem;">
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="img/lista.png" alt="Icon" width="150" height="150" class="mr-3">
+                                    <div>
+                                        <h5 class="card-title">Listar Pedidos</h5>
+                                        <p class="card-text">Ver lista de pedidos.</p>
+                                    </div>
+                                </div>
+                                <a href="pedidos/listarPedidos.php" class="btn btn-outline-info btn-lg btn-block">Listar Comercio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-deck">
+                        <div class="card text-center" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+
+                        <div class="card text-center" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -238,6 +341,25 @@
     <script src="vendor/js/sb-admin-2.min.js"></script>
 
     <script src="vendor/js/sb-admin-2.min.js"></script>
+
+    <script>
+        document.getElementById('listarVentasHoyBtn').addEventListener('click', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'ventas/listarVentas.php';
+            form.id = 'listarVentasForm';
+
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'fechaVenta';
+            input.value = today;
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+            form.submit();
+        });
+    </script>
 
 </body>
 

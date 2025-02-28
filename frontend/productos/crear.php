@@ -1,4 +1,5 @@
 <?php
+$titulo = 'Crear Productos';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">

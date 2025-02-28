@@ -1,8 +1,12 @@
 <?php
+$titulo = 'Crear Pedido para Comercio';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">
-    <h2 class="bg-danger">Crear Pedido Comercio</h2>
+    <div class="alert alert-warning" role="alert">
+        Crear Pedido Comercio
+    </div>
+
     <form id="pedidoForm">
         <div class="row">
             <div class="form-group col-6">

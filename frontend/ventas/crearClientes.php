@@ -1,8 +1,11 @@
 <?php
+$titulo = 'Crear Ventas para Clientes';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">
-    <h2 class="bg-primary">Crear Venta Clientes</h2>
+    <div class="alert alert-primary" role="alert">
+        Crear Venta Clientes
+    </div>
     <form id="ventaForm">
         <div class="row">
             <div class="form-group col-6">

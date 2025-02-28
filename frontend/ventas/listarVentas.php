@@ -1,4 +1,5 @@
 <?php
+$titulo = 'Listar Ventas';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">
@@ -44,6 +45,10 @@ include_once '../vendor/inicio.html';
         });
 
         $('#listarVentasForm').on('submit', function(event) {
+            enviarForm(event);
+        });
+
+        function enviarForm(event) {
             event.preventDefault();
             const fechaVenta = $('#fechaVenta').val();
 
@@ -73,7 +78,15 @@ include_once '../vendor/inicio.html';
                 .catch(error => {
                     console.error('Error:', error);
                 });
-        });
+        }
+
+        // Check if the form was submitted from the dashboard
+        const urlParams = new URLSearchParams(window.location.search);
+        const fechaVenta = urlParams.get('fechaVenta');
+        if (fechaVenta) {
+            $('#fechaVenta').val(fechaVenta);
+            $('#listarVentasForm').submit();
+        }
     });
 </script>
 <?php
