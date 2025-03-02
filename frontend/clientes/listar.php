@@ -70,7 +70,7 @@ include_once '../vendor/inicio.html';
 
     $('#confirmDeleteBtn').on('click', function() {
         const idCliente = $(this).data('id');
-        fetch(`https://localhost/comercio/backend/clientes/delete.php?idCliente=${idCliente}`, {
+        fetch(`<?= $URL_BASE; ?>comercio/backend/clientes/delete.php?idCliente=${idCliente}`, {
             method: 'DELETE'
         })
             .then(response => {
@@ -98,7 +98,7 @@ include_once '../vendor/inicio.html';
         const correo = document.getElementById('correo').value.trim();
 
         // Construir la URL con parámetros GET
-        const url = new URL('https://localhost/comercio/backend/clientes/listar.php');
+        const url = new URL('<?= $URL_BASE; ?>comercio/backend/clientes/listar.php');
         const params = {};
         if (nombre) params.nombre = nombre;
         if (apellido) params.apellido = apellido;

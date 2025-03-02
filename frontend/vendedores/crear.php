@@ -27,7 +27,7 @@ include_once '../vendor/inicio.html';
                 telefono: document.getElementById('telefono').value
             };
 
-            fetch('https://localhost/comercio/backend/vendedores/create.php', {
+            fetch('<?= $URL_BASE; ?>comercio/backend/vendedores/create.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

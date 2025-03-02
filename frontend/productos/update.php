@@ -51,7 +51,7 @@ include_once '../vendor/inicio.html';
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        fetch(`https://localhost/comercio/backend/productos/getById.php?idProducto=<?= $idProducto; ?>`)
+        fetch(`<?= $URL_BASE; ?>comercio/backend/productos/getById.php?idProducto=<?= $idProducto; ?>`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById('nombre').value = data.nombre;
@@ -72,7 +72,7 @@ include_once '../vendor/inicio.html';
         document.getElementById('productoForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const url = new URL('https://localhost/comercio/backend/productos/update.php');
+            const url = new URL('<?= $URL_BASE; ?>comercio/backend/productos/update.php');
             const formData = new FormData();
 
             formData.append('_method', 'PUT');  // Simulamos el método PUT

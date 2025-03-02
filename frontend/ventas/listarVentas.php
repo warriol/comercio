@@ -52,7 +52,7 @@ include_once '../vendor/inicio.html';
             event.preventDefault();
             const fechaVenta = $('#fechaVenta').val();
 
-            fetch(`https://localhost/comercio/backend/ventas/listar.php?fechaVenta=${fechaVenta}`)
+            fetch(`<?= $URL_BASE; ?>comercio/backend/ventas/listar.php?fechaVenta=${fechaVenta}`)
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = $('#ventasTable tbody');

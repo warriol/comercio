@@ -163,17 +163,25 @@ class Client extends \Config
      */
     public function update_cliente(mixed $idCliente, mixed $nombre, mixed $apellido, mixed $telefono, mixed $correo)
     {
-        $stmt = $this->conn->prepare('UPDATE clientes SET nombre = :nombre, apellido = :apellido, telefono = :telefono, correo = :correo WHERE idCliente = :idCliente');
-        $stmt->bindParam(':idCliente', $idCliente);
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':apellido', $apellido);
-        $stmt->bindParam(':telefono', $telefono);
-        $stmt->bindParam(':correo', $correo);
-        if ($stmt->execute()) {
-            header('HTTP/1.1 200 Cliente actualizado correctamente');
-        } else {
-            header('HTTP/1.1 401 Cliente no actualizado');
+        $retorno = [
+            'header' => 'HTTP/1.1 201 Cliente actualizado correctamente',
+            'message' => 'Cliente ' . $nombre . ' ' . $apellido . ' creado.'
+        ];
+        try {
+            $stmt = $this->conn->prepare('UPDATE clientes SET nombre = :nombre, apellido = :apellido, telefono = :telefono, correo = :correo WHERE idCliente = :idCliente');
+            $stmt->bindParam(':idCliente', $idCliente);
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':apellido', $apellido);
+            $stmt->bindParam(':telefono', $telefono);
+            $stmt->bindParam(':correo', $correo);
+            $stmt->execute();
+        } catch (\PDOException $e) {
+            $retorno = [
+                'header' => 'HTTP/1.1 401 Error en la consulta',
+                'message' => 'Error: ' . $e->getMessage()
+            ];
         }
+        return $retorno;
     }
 
     /**

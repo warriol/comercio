@@ -10,7 +10,7 @@ include_once '../vendor/inicio.html';
             </div>
             <div class="form-group">
                 <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" id="apellido" name="apellido" required>
+                <input type="text" class="form-control" id="apellido" name="apellido">
             </div>
             <div class="form-group">
                 <label for="telefono">Teléfono</label>
@@ -18,7 +18,7 @@ include_once '../vendor/inicio.html';
             </div>
             <div class="form-group">
                 <label for="correo">Correo</label>
-                <input type="email" class="form-control" id="correo" name="correo" required>
+                <input type="email" class="form-control" id="correo" name="correo">
             </div>
             <button type="submit" class="btn btn-primary">Crear Cliente</button>
         </form>
@@ -36,20 +36,24 @@ include_once '../vendor/inicio.html';
                 correo: document.getElementById('correo').value
             };
 
-            fetch('https://localhost/comercio/backend/clientes/create.php', {
+            // Show spinner
+            document.getElementById('responseMessage').innerHTML = '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>';
+
+            fetch('<?= $URL_BASE; ?>comercio/backend/clientes/create.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
-            })
-            .catch(error => {
-                document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al creando al cliente.</div>`;
-            });
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                    document.getElementById('clienteForm').reset(); // Reset form
+                })
+                .catch(error => {
+                    document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al creando al cliente.</div>`;
+                });
         });
     </script>
 

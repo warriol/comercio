@@ -19,7 +19,7 @@ include_once '../vendor/inicio.html';
         </div>
         <div class="form-group">
             <label for="apellido">Apellido</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" required>
+            <input type="text" class="form-control" id="apellido" name="apellido" >
         </div>
         <div class="form-group">
             <label for="telefono">Teléfono</label>
@@ -27,7 +27,7 @@ include_once '../vendor/inicio.html';
         </div>
         <div class="form-group">
             <label for="correo">Correo</label>
-            <input type="email" class="form-control" id="correo" name="correo" required>
+            <input type="email" class="form-control" id="correo" name="correo">
         </div>
         <button type="submit" class="btn btn-primary">Editar Cliente</button>
     </form>
@@ -37,7 +37,7 @@ include_once '../vendor/inicio.html';
 <script>
 
     // Obtener el cliente por ID
-    fetch(`https://localhost/comercio/backend/clientes/getById.php?idCliente=<?= $idCliente; ?>`)
+    fetch(`<?= $URL_BASE; ?>comercio/backend/clientes/getById.php?idCliente=<?= $idCliente; ?>`)
     .then(response => response.json())
     .then(data => {
         document.getElementById('nombre').value = data.nombre;
@@ -59,8 +59,11 @@ include_once '../vendor/inicio.html';
         const telefono = document.getElementById('telefono').value.trim();
         const correo = document.getElementById('correo').value.trim();
 
+        // Show spinner
+        document.getElementById('responseMessage').innerHTML = '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>';
+
         // Construir la URL con parámetros GET
-        const url = new URL('https://localhost/comercio/backend/clientes/update.php');
+        const url = new URL('<?= $URL_BASE; ?>comercio/backend/clientes/update.php');
         const params = {};
         params.idCliente = <?= $idCliente; ?>;
         if (nombre) params.nombre = nombre;
@@ -73,9 +76,16 @@ include_once '../vendor/inicio.html';
         fetch(url, {
             method: 'PUT'
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log(response);
+            return response.json();
+        })
         .then(data => {
             document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+            document.getElementById('clienteForm').reset(); // Reset form
         })
         .catch(error => {
             document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al actualizar el cliente</div>`;

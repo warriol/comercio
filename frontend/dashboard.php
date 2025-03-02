@@ -150,6 +150,13 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+                        <!-- Nav Item - Date and Time -->
+                        <li class="nav-item">
+                            <span class="nav-link">
+                                <span id="currentDateTime" class="mr-2 d-none d-lg-inline text-gray-600"></span>
+                            </span>
+                        </li>
+
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -260,7 +267,7 @@
                                         <p class="card-text">Ver lista de pedidos.</p>
                                     </div>
                                 </div>
-                                <a href="pedidos/listarPedidos.php" class="btn btn-outline-info btn-lg btn-block">Listar Comercio</a>
+                                <a href="pedidos/listarPedidos.php" class="btn btn-outline-info btn-lg btn-block">Listar Pedidos</a>
                             </div>
                         </div>
                     </div>
@@ -340,8 +347,6 @@
     <!-- Custom scripts for all pages-->
     <script src="vendor/js/sb-admin-2.min.js"></script>
 
-    <script src="vendor/js/sb-admin-2.min.js"></script>
-
     <script>
         document.getElementById('listarVentasHoyBtn').addEventListener('click', function() {
             const today = new Date().toISOString().split('T')[0];
@@ -359,6 +364,17 @@
             document.body.appendChild(form);
             form.submit();
         });
+
+        function updateDateTime() {
+            const now = new Date();
+            const formattedDateTime = now.toLocaleString('es-ES', {
+                dateStyle: 'full',
+                timeStyle: 'medium'
+            });
+            document.getElementById('currentDateTime').textContent = formattedDateTime;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
     </script>
 
 </body>

@@ -43,7 +43,7 @@ include_once '../vendor/inicio.html';
             event.preventDefault();
             const fechaPedido = $('#fechaPedido').val();
 
-            fetch(`https://localhost/comercio/backend/pedidos/listar.php?fechaPedido=${fechaPedido}`)
+            fetch(`<?= $URL_BASE; ?>comercio/backend/pedidos/listar.php?fechaPedido=${fechaPedido}`)
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = $('#pedidosTable tbody');
@@ -68,7 +68,7 @@ include_once '../vendor/inicio.html';
 
                     $('.entregarPedidoBtn').on('click', function() {
                         const idPedido = $(this).data('id');
-                        fetch(`https://localhost/comercio/backend/pedidos/entregar.php`, {
+                        fetch(`<?= $URL_BASE; ?>comercio/backend/pedidos/entregar.php`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'

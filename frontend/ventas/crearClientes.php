@@ -132,7 +132,7 @@ include_once '../vendor/inicio.html';
         });
 
         // Fetch clients, sellers, and products
-        fetch('https://localhost/comercio/backend/clientes/listar.php')
+        fetch('<?= $URL_BASE; ?>comercio/backend/clientes/listar.php')
             .then(response => response.json())
             .then(data => {
                 const clienteSelect = document.getElementById('idCliente');
@@ -144,7 +144,7 @@ include_once '../vendor/inicio.html';
                 });
             });
 
-        fetch('https://localhost/comercio/backend/vendedores/listar.php')
+        fetch('<?= $URL_BASE; ?>comercio/backend/vendedores/listar.php')
             .then(response => response.json())
             .then(data => {
                 const vendedorSelect = document.getElementById('idVendedor');
@@ -156,7 +156,7 @@ include_once '../vendor/inicio.html';
                 });
             });
 
-        fetch('https://localhost/comercio/backend/productos/listar.php')
+        fetch('<?= $URL_BASE; ?>comercio/backend/productos/listar.php')
             .then(response => response.json())
             .then(data => {
                 const productoSelect = document.getElementById('productoSelect');
@@ -251,7 +251,7 @@ include_once '../vendor/inicio.html';
             }
             formData.append('detalles', JSON.stringify(detalles));
 
-            fetch('https://localhost/comercio/backend/ventas/create.php', {
+            fetch('<?= $URL_BASE; ?>comercio/backend/ventas/create.php', {
                 method: 'POST',
                 body: formData
             })
