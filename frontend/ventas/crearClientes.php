@@ -3,14 +3,16 @@ $titulo = 'Crear Ventas para Clientes';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">
-    <div class="alert alert-primary" role="alert">
-        Crear Venta Clientes
-    </div>
-    <form id="ventaForm">
+    <div id="responseMessage" class="mt-3"></div>
+
+    <div id="contentForm">
+        <div class="alert alert-primary" role="alert">Crear Venta Clientes</div>
+        <form id="ventaForm">
         <div class="row">
             <div class="form-group col-6">
                 <label for="idCliente">Cliente</label>
-                <select class="form-control" id="idCliente" name="idCliente" required>
+                <input type="text" class="form-control" id="idClienteInput" name="idClienteInput" placeholder="Buscar cliente" required>
+                <select class="form-control mt-2" id="idCliente" name="idCliente" size="5" style="display: none;">
                     <!-- Opciones de clientes -->
                 </select>
             </div>
@@ -40,7 +42,7 @@ include_once '../vendor/inicio.html';
         </div>
         <div class="form-group">
             <label for="comentarios">Comentarios</label>
-            <textarea class="form-control" id="comentarios" name="comentarios"></textarea>
+            <textarea class="form-control" id="comentarios" name="comentarios" cols="2"></textarea>
         </div>
         <hr>
         <div class="row justify-content-between">
@@ -79,7 +81,7 @@ include_once '../vendor/inicio.html';
         </table>
         <button type="submit" class="btn btn-primary">Crear Venta</button>
     </form>
-    <div id="responseMessage" class="mt-3"></div>
+    </div>
 </div>
 
 <!-- Modal para agregar productos -->
@@ -126,6 +128,11 @@ include_once '../vendor/inicio.html';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        todayHighlight: true
+    });
+
     $(document).ready(function() {
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd'
@@ -136,11 +143,34 @@ include_once '../vendor/inicio.html';
             .then(response => response.json())
             .then(data => {
                 const clienteSelect = document.getElementById('idCliente');
+                const clienteInput = document.getElementById('idClienteInput');
+                let clientes = [];
+
                 data.forEach(cliente => {
                     const option = document.createElement('option');
                     option.value = cliente.idCliente;
                     option.text = cliente.nombre + ' ' + cliente.apellido + ' - ' + cliente.telefono;
                     clienteSelect.appendChild(option);
+                    clientes.push(option);
+                });
+
+                clienteInput.addEventListener('input', function() {
+                    const searchTerm = clienteInput.value.toLowerCase();
+                    clienteSelect.style.display = 'block';
+                    clienteSelect.innerHTML = '';
+                    clientes.forEach(option => {
+                        if (option.text.toLowerCase().includes(searchTerm)) {
+                            clienteSelect.appendChild(option);
+                        }
+                    });
+                    if (clienteSelect.options.length === 0) {
+                        clienteSelect.style.display = 'none';
+                    }
+                });
+
+                clienteSelect.addEventListener('change', function() {
+                    clienteInput.value = clienteSelect.options[clienteSelect.selectedIndex].text;
+                    clienteSelect.style.display = 'none';
                 });
             });
 
@@ -218,7 +248,6 @@ include_once '../vendor/inicio.html';
             });
         });
 
-
         function actualizarTotalVenta() {
             const tableBody = document.getElementById('detalleVentaTable').getElementsByTagName('tbody')[0];
             let total = 0;
@@ -258,6 +287,38 @@ include_once '../vendor/inicio.html';
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+
+                    // Ocultar el formulario original
+                    document.getElementById('ventaForm').style.display = 'none';
+
+                    // Crear y mostrar el nuevo formulario
+                    const nuevoFormulario = document.createElement('div');
+                    nuevoFormulario.innerHTML = `
+                        <div class="container mt-5">
+                            <div class="alert alert-primary" role="alert">Pago del Cliente</div>
+                            <form id="pagoForm">
+                                <div class="form-group">
+                                    <label for="montoPagado">Monto Pagado</label>
+                                    <input type="number" class="form-control" id="montoPagado" name="montoPagado" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="vuelto">Vuelto</label>
+                                    <input type="text" class="form-control" id="vuelto" name="vuelto" readonly>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Calcular Vuelto</button>
+                            </form>
+                        </div>
+                    `;
+
+                    document.getElementById('contentForm').appendChild(nuevoFormulario);
+
+                    document.getElementById('pagoForm').addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const montoPagado = parseFloat(document.getElementById('montoPagado').value);
+                        const totalVenta = parseFloat(document.getElementById('totalVenta').value);
+                        const vuelto = montoPagado - totalVenta;
+                        document.getElementById('vuelto').value = vuelto.toFixed(2);
+                    });
                 })
                 .catch(error => {
                     document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al crear la venta.</div>`;
