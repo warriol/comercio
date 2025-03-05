@@ -2,7 +2,7 @@
 $titulo = 'Crear Pedido para Comercio';
 include_once '../vendor/inicio.html';
 ?>
-<div class="container mt-5">
+<div class="container my-5">
     <div id="responseMessage" class="mt-3"></div>
     <div id="contentForm">
         <div class="alert alert-warning" role="alert">Crear Pedido para Comercio</div>
@@ -102,8 +102,8 @@ include_once '../vendor/inicio.html';
                 </div>
                 <div class="form-group">
                     <label for="cantidadProducto">Cantidad</label>
-                    <input type="range" class="form-control" id="cantidadProducto" name="cantidadProducto" min="1" max="50" step="1" required>
-                    <input type="number" class="form-control" id="cantidadProductoNumber" name="cantidadProductoNumber" min="1" max="50" step="1" required>
+                    <input type="range" class="form-control" id="cantidadProducto" name="cantidadProducto" min="0.5" max="50" step="0.5" required>
+                    <input type="number" class="form-control" id="cantidadProductoNumber" name="cantidadProductoNumber" min="0.5" max="50" step="0.5" required>
                 </div>
                 <div class="form-group">
                     <label for="subtotalProducto">Subtotal</label>

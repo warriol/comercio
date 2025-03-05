@@ -2,84 +2,84 @@
 $titulo = 'Crear Ventas para Comercio';
 include_once '../vendor/inicio.html';
 ?>
-<div class="container mt-5">
+<div class="container my-5">
     <div id="responseMessage" class="mt-3"></div>
 
     <div id="contentForm">
         <div class="alert alert-warning" role="alert">Crear Venta para Comercio</div>
         <form id="ventaForm">
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="idCliente">Cliente</label>
-                <input type="text" class="form-control" id="idClienteInput" name="idClienteInput" placeholder="Buscar comercio" required>
-                <select class="form-control mt-2" id="idCliente" name="idCliente" size="5" style="display: none;">
-                    <!-- Opciones de clientes -->
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="idCliente">Cliente</label>
+                    <input type="text" class="form-control" id="idClienteInput" name="idClienteInput" placeholder="Buscar comercio" required>
+                    <select class="form-control mt-2" id="idCliente" name="idCliente" size="5" style="display: none;">
+                        <!-- Opciones de clientes -->
+                    </select>
+                </div>
+                <div class="form-group col-6">
+                    <label for="idVendedor">Vendedor</label>
+                    <select class="form-control" id="idVendedor" name="idVendedor" required>
+                        <!-- Opciones de vendedores -->
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="fechaVenta">Fecha de Venta</label>
+                    <input type="text" class="form-control" id="fechaVenta" name="fechaVenta" value="<?php echo date('Y-m-d'); ?>" readonly>
+                </div>
+                <div class="form-group col-6">
+                    <label for="fechaEntrega">Fecha de Entrega</label>
+                    <input type="text" class="form-control datepicker" id="fechaEntrega" name="fechaEntrega" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tipoVenta">Tipo de Venta</label>
+                <select class="form-control" id="tipoVenta" name="tipoVenta" required>
+                    <option value="contado">Contado</option>
+                    <option value="credito">Crédito</option>
                 </select>
             </div>
-            <div class="form-group col-6">
-                <label for="idVendedor">Vendedor</label>
-                <select class="form-control" id="idVendedor" name="idVendedor" required>
-                    <!-- Opciones de vendedores -->
-                </select>
+            <div class="form-group">
+                <label for="comentarios">Comentarios</label>
+                <textarea class="form-control" id="comentarios" name="comentarios"></textarea>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-6">
-                <label for="fechaVenta">Fecha de Venta</label>
-                <input type="text" class="form-control" id="fechaVenta" name="fechaVenta" value="<?php echo date('Y-m-d'); ?>" readonly>
-            </div>
-            <div class="form-group col-6">
-                <label for="fechaEntrega">Fecha de Entrega</label>
-                <input type="text" class="form-control datepicker" id="fechaEntrega" name="fechaEntrega" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="tipoVenta">Tipo de Venta</label>
-            <select class="form-control" id="tipoVenta" name="tipoVenta" required>
-                <option value="contado">Contado</option>
-                <option value="credito">Crédito</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="comentarios">Comentarios</label>
-            <textarea class="form-control" id="comentarios" name="comentarios"></textarea>
-        </div>
-        <hr>
-        <div class="row justify-content-between">
-            <div class="form-group col-4">
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#productoModal">Agregar Producto</button>
-            </div>
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-6 text-right">
-                        <label for="totalVenta">Total</label>
-                    </div>
-                    <div class="col-6">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">$</span>
+            <hr>
+            <div class="row justify-content-between">
+                <div class="form-group col-4">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#productoModal">Agregar Producto</button>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col-6 text-right">
+                            <label for="totalVenta">Total</label>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control text-right" id="totalVenta" name="totalVenta" readonly aria-label="Amount (to the nearest dollar)">
                             </div>
-                            <input type="text" class="form-control text-right" id="totalVenta" name="totalVenta" readonly aria-label="Amount (to the nearest dollar)">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <table class="table mt-3" id="detalleVentaTable">
-            <thead>
-            <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Detalles de productos -->
-            </tbody>
-        </table>
-        <button type="submit" class="btn btn-primary">Crear Venta</button>
-    </form>
+            <table class="table mt-3" id="detalleVentaTable">
+                <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Detalles de productos -->
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Crear Venta</button>
+        </form>
     </div>
 </div>
 
@@ -102,8 +102,8 @@ include_once '../vendor/inicio.html';
                 </div>
                 <div class="form-group">
                     <label for="cantidadProducto">Cantidad</label>
-                    <input type="range" class="form-control" id="cantidadProducto" name="cantidadProducto" min="1" max="50" step="1" required>
-                    <input type="number" class="form-control" id="cantidadProductoNumber" name="cantidadProductoNumber" min="1" max="50" step="1" required>
+                    <input type="range" class="form-control" id="cantidadProducto" name="cantidadProducto" min="0.5" max="50" step="0.5" required>
+                    <input type="number" class="form-control" id="cantidadProductoNumber" name="cantidadProductoNumber" min="0.5" max="50" step="0.5" required>
                 </div>
                 <div class="form-group">
                     <label for="subtotalProducto">Subtotal</label>
@@ -282,7 +282,62 @@ include_once '../vendor/inicio.html';
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
-                    document.getElementById('ventaForm').reset();
+
+                    // Ocultar el formulario original
+                    document.getElementById('ventaForm').style.display = 'none';
+
+                    // Crear y mostrar el nuevo formulario
+                    const nuevoFormulario = document.createElement('div');
+                    nuevoFormulario.innerHTML = `
+                        <div class="container mt-5">
+                            <div class="alert alert-primary" role="alert">Pago del Cliente</div>
+                            <div id="resumenVenta">
+                                <p><strong>Cliente:</strong> ${document.getElementById('idClienteInput').value} || <strong>Vendedor:</strong> ${document.getElementById('idVendedor').options[document.getElementById('idVendedor').selectedIndex].text}</p>
+                                <p><strong>Fecha de Venta:</strong> ${document.getElementById('fechaVenta').value} || <strong>Fecha de Entrega:</strong> ${document.getElementById('fechaEntrega').value}</p>
+                                <p><strong>Tipo de Venta:</strong> ${document.getElementById('tipoVenta').value}</p>
+                                <p><strong>Total:</strong> $ ${document.getElementById('totalVenta').value}</p>
+                            </div>
+                            <form id="pagoForm">
+                                <div class="form-group">
+                                    <label for="montoPagado">Monto Pagado</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <input type="number" class="form-control" id="montoPagado" name="montoPagado" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="vuelto">Vuelto</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="vuelto" name="vuelto" readonly>
+                                    </div>
+                                </div>
+                                <div class="btn-toolbar justify-content-between">
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">Calcular Vuelto</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="../dashboard.php" class="btn btn-secondary">Volver al Inicio</a>
+                                        <a href="crearComercio.php" class="btn btn-warning">Crear otra Venta</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    `;
+
+                    document.getElementById('contentForm').appendChild(nuevoFormulario);
+
+                    document.getElementById('pagoForm').addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const montoPagado = parseFloat(document.getElementById('montoPagado').value);
+                        const totalVenta = parseFloat(document.getElementById('totalVenta').value);
+                        const vuelto = montoPagado - totalVenta;
+                        document.getElementById('vuelto').value = vuelto.toFixed(2);
+                    });
                 })
                 .catch(error => {
                     document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al crear la venta.</div>`;
