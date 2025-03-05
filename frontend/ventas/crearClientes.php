@@ -6,7 +6,7 @@ include_once '../vendor/inicio.html';
     <div id="responseMessage" class="mt-3"></div>
 
     <div id="contentForm">
-        <div class="alert alert-primary" role="alert">Crear Venta Clientes</div>
+        <div class="alert alert-primary" role="alert">Crear Venta para Clientes</div>
         <form id="ventaForm">
         <div class="row">
             <div class="form-group col-6">
@@ -86,7 +86,7 @@ include_once '../vendor/inicio.html';
 
 <!-- Modal para agregar productos -->
 <div class="modal fade" id="productoModal" tabindex="-1" role="dialog" aria-labelledby="productoModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="productoModalLabel">Agregar Producto</h5>
@@ -103,8 +103,8 @@ include_once '../vendor/inicio.html';
                 </div>
                 <div class="form-group">
                     <label for="cantidadProducto">Cantidad</label>
-                    <input type="range" class="form-control" id="cantidadProducto" name="cantidadProducto" min="1" max="50" step="1" required>
-                    <input type="number" class="form-control" id="cantidadProductoNumber" name="cantidadProductoNumber" min="1" max="50" step="1" required>
+                    <input type="range" class="form-control" id="cantidadProducto" name="cantidadProducto" min="0.5" max="50" step="0.5" required>
+                    <input type="number" class="form-control" id="cantidadProductoNumber" name="cantidadProductoNumber" min="0.5" max="50" step="0.5" required>
                 </div>
                 <div class="form-group">
                     <label for="subtotalProducto">Subtotal</label>
@@ -128,14 +128,10 @@ include_once '../vendor/inicio.html';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
-        todayHighlight: true
-    });
-
     $(document).ready(function() {
         $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd'
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
         });
 
         // Fetch clients, sellers, and products

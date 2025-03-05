@@ -22,6 +22,7 @@ include_once '../vendor/inicio.html';
             <select class="form-control" id="tipo" name="tipo" required>
                 <option value="por kilo">por kilo</option>
                 <option value="por unidad">por unidad</option>
+                <option value="por mitad">por mitad</option>
                 <option value="oferta">oferta</option>
                 <option value="paquete">paquete</option>
                 <option value="100">100</option>
@@ -58,6 +59,7 @@ include_once '../vendor/inicio.html';
             .then(response => response.json())
             .then(data => {
                 document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                document.getElementById('productoForm').reset(); // Reset form
             })
             .catch(error => {
                 document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al creando el producto.</div>`;

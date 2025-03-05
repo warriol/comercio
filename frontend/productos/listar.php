@@ -15,6 +15,7 @@ include_once '../vendor/inicio.html';
                 <option value="">Todos</option>
                 <option value="por kilo">por kilo</option>
                 <option value="por unidad">por unidad</option>
+                <option value="por mitad">por mitad</option>
                 <option value="oferta">oferta</option>
                 <option value="paquete">paquete</option>
                 <option value="100">100</option>

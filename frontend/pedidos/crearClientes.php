@@ -3,15 +3,16 @@ $titulo = 'Crear Pedido para Clientes';
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">
-    <div class="alert alert-primary" role="alert">
-        Crear Pedido
-    </div>
+    <div id="responseMessage" class="mt-3"></div>
 
-    <form id="pedidoForm">
+    <div id="contentForm">
+        <div class="alert alert-primary" role="alert">Crear Pedido para Cliente</div>
+        <form id="pedidoForm">
         <div class="row">
             <div class="form-group col-6">
                 <label for="idCliente">Cliente</label>
-                <select class="form-control" id="idCliente" name="idCliente" required>
+                <input type="text" class="form-control" id="idClienteInput" name="idClienteInput" placeholder="Buscar cliente" required>
+                <select class="form-control mt-2" id="idCliente" name="idCliente" size="5" style="display: none;">
                     <!-- Opciones de clientes -->
                 </select>
             </div>
@@ -80,12 +81,12 @@ include_once '../vendor/inicio.html';
         </table>
         <button type="submit" class="btn btn-primary">Crear Pedido</button>
     </form>
-    <div id="responseMessage" class="mt-3"></div>
+    </div>
 </div>
 
 <!-- Modal para agregar productos -->
 <div class="modal fade" id="productoModal" tabindex="-1" role="dialog" aria-labelledby="productoModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="productoModalLabel">Agregar Producto</h5>
@@ -129,7 +130,8 @@ include_once '../vendor/inicio.html';
 <script>
     $(document).ready(function() {
         $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd'
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
         });
 
         // Fetch clients, sellers, and products
@@ -137,11 +139,34 @@ include_once '../vendor/inicio.html';
             .then(response => response.json())
             .then(data => {
                 const clienteSelect = document.getElementById('idCliente');
+                const clienteInput = document.getElementById('idClienteInput');
+                let clientes = [];
+
                 data.forEach(cliente => {
                     const option = document.createElement('option');
                     option.value = cliente.idCliente;
-                    option.text = cliente.nombre;
+                    option.text = cliente.nombre + ' ' + cliente.apellido + ' - ' + cliente.telefono;
                     clienteSelect.appendChild(option);
+                    clientes.push(option);
+                });
+
+                clienteInput.addEventListener('input', function() {
+                    const searchTerm = clienteInput.value.toLowerCase();
+                    clienteSelect.style.display = 'block';
+                    clienteSelect.innerHTML = '';
+                    clientes.forEach(option => {
+                        if (option.text.toLowerCase().includes(searchTerm)) {
+                            clienteSelect.appendChild(option);
+                        }
+                    });
+                    if (clienteSelect.options.length === 0) {
+                        clienteSelect.style.display = 'none';
+                    }
+                });
+
+                clienteSelect.addEventListener('change', function() {
+                    clienteInput.value = clienteSelect.options[clienteSelect.selectedIndex].text;
+                    clienteSelect.style.display = 'none';
                 });
             });
 

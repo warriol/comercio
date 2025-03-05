@@ -16,13 +16,13 @@ class Venta extends \Config
         try {
             $this->conn->beginTransaction();
 
-            $stmt = $this->conn->prepare('INSERT INTO ventas (idCliente, idVendedor, fechaVenta, fechaEntrega, tipoVenta, comentarios) VALUES (:idCliente, :idVendedor, :fechaVenta, :fechaEntrega, :tipoVenta, :comentarios)');
+            $stmt = $this->conn->prepare('INSERT INTO ventas (idCliente, idVendedor, fechaVenta, fechaEntrega, tipoVenta, comentario) VALUES (:idCliente, :idVendedor, :fechaVenta, :fechaEntrega, :tipoVenta, :comentario)');
             $stmt->bindParam(':idCliente', $idCliente);
             $stmt->bindParam(':idVendedor', $idVendedor);
             $stmt->bindParam(':fechaVenta', $fechaVenta);
             $stmt->bindParam(':fechaEntrega', $fechaEntrega);
             $stmt->bindParam(':tipoVenta', $tipoVenta);
-            $stmt->bindParam(':comentarios', $comentarios);
+            $stmt->bindParam(':comentario', $comentarios);
             $stmt->execute();
 
             $idVenta = $this->conn->lastInsertId();

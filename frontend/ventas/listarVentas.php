@@ -41,7 +41,8 @@ include_once '../vendor/inicio.html';
 <script>
     $(document).ready(function() {
         $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd'
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
         });
 
         $('#listarVentasForm').on('submit', function(event) {

@@ -77,8 +77,10 @@ class Product extends \Config
 
     public function listar_producto_filtro(mixed $nombre, mixed $tipo)
     {
+        // $stmt = $this->conn->prepare('SELECT * FROM productos WHERE nombre LIKE CONCAT(\'%\', :nombre, \'%\') OR tipo LIKE CONCAT(\'%\', :tipo, \'%\')');
+        $sql = "SELECT * FROM productos WHERE nombre LIKE CONCAT('%', :nombre, '%') OR tipo LIKE CONCAT('%', :tipo, '%')";
         try {
-            $stmt = $this->conn->prepare('SELECT * FROM productos WHERE nombre LIKE :nombre AND tipo LIKE :tipo');
+            $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':tipo', $tipo);
             $stmt->execute();

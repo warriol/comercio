@@ -42,11 +42,46 @@
             <!-- Heading -->
             <div class="sidebar-heading">Enlaces</div>
 
+            <!-- Ventas -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
+                   aria-expanded="true" aria-controls="collapseSix">
+                    <i class="fas fa-fw fa-calculator"></i>
+                    <span>Ventas</span>
+                </a>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="ventas/crearClientes.php">Para Clientes</a>
+                        <a class="collapse-item" href="ventas/crearComercio.php">Para Comercio</a>
+                        <a class="collapse-item" href="ventas/listarVentos.php">Listar</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Pedidos -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                   aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-fw fa-clipboard-check"></i>
+                    <span>Pedidos</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="pedidos/crearClientes.php">Para Clientes</a>
+                        <a class="collapse-item" href="pedidos/crearComercio.php">Para Comercio</a>
+                        <a class="collapse-item" href="pedidos/listarPedidos.php">Listar</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <!-- Clientes -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-id-badge"></i>
                     <span>Clientes</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -62,7 +97,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTree"
                    aria-expanded="true" aria-controls="collapseTree">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-people-carry"></i>
                     <span>Vendedores</span>
                 </a>
                 <div id="collapseTree" class="collapse" aria-labelledby="headingTree" data-parent="#accordionSidebar">
@@ -74,27 +109,11 @@
                 </div>
             </li>
 
-            <!-- Pedidos -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                   aria-expanded="true" aria-controls="collapseFour">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Pedidos</span>
-                </a>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pedidos/crearClientes.php">Para Clientes</a>
-                        <a class="collapse-item" href="pedidos/crearComercio.php">Para Comercio</a>
-                        <a class="collapse-item" href="pedidos/listarPedidos.php">Listar</a>
-                    </div>
-                </div>
-            </li>
-
             <!-- Productos -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
                    aria-expanded="true" aria-controls="collapseFive">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-box-open"></i>
                     <span>Productos</span>
                 </a>
                 <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
@@ -102,22 +121,6 @@
                         <a class="collapse-item" href="productos/crear.php">Crear</a>
                         <a class="collapse-item" href="productos/listar.php">Listar</a>
                         <a class="collapse-item" href="productos/update.php">Actualizar</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Ventas -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
-                   aria-expanded="true" aria-controls="collapseSix">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Ventas</span>
-                </a>
-                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="ventas/crearClientes.php">Para Clientes</a>
-                        <a class="collapse-item" href="ventas/crearComercio.php">Para Comercio</a>
-                        <a class="collapse-item" href="ventas/listarVentos.php">Listar</a>
                     </div>
                 </div>
             </li>
