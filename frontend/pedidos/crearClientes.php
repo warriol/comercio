@@ -24,6 +24,9 @@ include_once '../vendor/inicio.html';
             </div>
         </div>
         <div class="row">
+            <div class="text-warning col-12">
+                <small>Para un PEDIDO, la fecha de entrega debe ser mayor o igual a la de venta.</small>
+            </div>
             <div class="form-group col-6">
                 <label for="fechaPedido">Fecha de Pedido</label>
                 <input type="text" class="form-control" id="fechaPedido" name="fechaPedido" value="<?php echo date('Y-m-d'); ?>" readonly>
@@ -79,6 +82,7 @@ include_once '../vendor/inicio.html';
             <!-- Detalles de productos -->
             </tbody>
         </table>
+        <div id="responseMessageErr" class="mt-3"></div>
         <button type="submit" class="btn btn-primary">Crear Pedido</button>
     </form>
     </div>
@@ -264,7 +268,14 @@ include_once '../vendor/inicio.html';
             formData.append('estado', document.getElementById('estado').value);
             formData.append('comentarios', document.getElementById('comentarios').value);
 
-            const tableBody = document.getElementById('detallePedidoTable').getElementsByTagName('tbody')[0];
+            const tableBody = document.getElementById('detallePedidoTable').getElementsByTagName('tbody')[0]
+            if (tableBody.rows.length === 0) {
+                document.getElementById('responseMessageErr').innerHTML = `<div class="alert alert-warning">Debe agregar al menos un producto al pedido.</div>`;
+                setTimeout(() => {
+                    document.getElementById('responseMessageErr').innerHTML = '';
+                }, 10000);
+                return;
+            }
             const detalles = [];
             for (let i = 0; i < tableBody.rows.length; i++) {
                 const row = tableBody.rows[i];
@@ -283,9 +294,31 @@ include_once '../vendor/inicio.html';
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+
+                    // Ocultar el formulario original
+                    document.getElementById('pedidoForm').style.display = 'none';
+
+                    // Crear y mostrar el nuevo formulario
+                    const nuevoFormulario = document.createElement('div');
+                    nuevoFormulario.innerHTML = `
+                            <div class="container mt-5">
+                                <div id="resumenVenta">
+                                    <p><strong>Cliente:</strong> ${document.getElementById('idClienteInput').value} || <strong>Vendedor:</strong> ${document.getElementById('idVendedor').options[document.getElementById('idVendedor').selectedIndex].text}</p>
+                                    <p><strong>Fecha de Pedido:</strong> ${document.getElementById('fechaPedido').value} || <strong>Fecha de Entrega:</strong> ${document.getElementById('fechaEntrega').value}</p>
+                                    <p><strong>Estado:</strong> ${document.getElementById('estado').value}</p>
+                                    <p><strong>Total:</strong> $ ${document.getElementById('totalPedido').value}</p>
+                                </div>
+                                <div class="btn-toolbar justify-content-between">
+                                    <div class="btn-group">
+                                        <a href="../dashboard.php" class="btn btn-secondary">Volver al Inicio</a>
+                                        <a href="crearClientes.php" class="btn btn-warning">Crear otro Pedido</a>
+                                    </div>
+                                </div>
+                        `;
+                    document.getElementById('contentForm').appendChild(nuevoFormulario);
                 })
                 .catch(error => {
-                    document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al crear el pedido.</div>`;
+                    document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al crear el pedido.<br>`+ error +`</div>`;
                 });
         });
     });

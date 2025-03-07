@@ -59,8 +59,8 @@ $(document).ready(function() {
             data.forEach(producto => {
                 const option = document.createElement('option');
                 option.value = producto.idProducto;
-                option.text = producto.nombre + ' [' + producto.precio + ' $ - ' + producto.tipo + ']';
-                option.dataset.precio = producto.precio;
+                option.text = producto.nombre + ' [' + producto[precioAtributo] + ' $ - ' + producto.tipo + ']';
+                option.dataset.precio = producto[precioAtributo];
                 productoSelect.appendChild(option);
             });
         });
@@ -135,6 +135,14 @@ $(document).ready(function() {
         formData.append('comentarios', document.getElementById('comentarios').value);
 
         const tableBody = document.getElementById('detalleVentaTable').getElementsByTagName('tbody')[0];
+
+        if (tableBody.rows.length === 0) {
+            document.getElementById('responseMessageErr').innerHTML = `<div class="alert alert-warning">Debe agregar al menos un producto al pedido.</div>`;
+            setTimeout(() => {
+                document.getElementById('responseMessageErr').innerHTML = '';
+            }, 10000);
+            return;
+        }
         const detalles = [];
         for (let i = 0; i < tableBody.rows.length; i++) {
             const row = tableBody.rows[i];

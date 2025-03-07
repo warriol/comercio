@@ -55,7 +55,7 @@ class Pedido extends \Config
                 JOIN vendedores v ON p.idVendedor = v.idVendedor
                 JOIN detallepedidos dp ON p.idPedido = dp.idPedido
                 JOIN productos pr ON dp.idProducto = pr.idProducto
-                WHERE p.fechaPedido = :fechaPedido
+                WHERE p.fechaEntrega = :fechaPedido
             ');
             $stmt->bindParam(':fechaPedido', $fechaPedido);
             $stmt->execute();
@@ -72,7 +72,7 @@ class Pedido extends \Config
             $this->conn->beginTransaction();
 
             // Update the order status
-            $stmt = $this->conn->prepare('UPDATE pedidos SET estado = "entregado" WHERE idPedido = :idPedido');
+            $stmt = $this->conn->prepare('UPDATE pedidos SET estado = 1 WHERE idPedido = :idPedido');
             $stmt->bindParam(':idPedido', $idPedido);
             $stmt->execute();
 
@@ -88,14 +88,14 @@ class Pedido extends \Config
 
             // Insert into ventas
             $stmt = $this->conn->prepare('
-                INSERT INTO ventas (idCliente, idVendedor, fechaVenta, fechaEntrega, tipoVenta, comentarios)
-                VALUES (:idCliente, :idVendedor, :fechaVenta, :fechaEntrega, "contado", :comentarios)
+                INSERT INTO ventas (idCliente, idVendedor, fechaVenta, fechaEntrega, tipoVenta, comentario)
+                VALUES (:idCliente, :idVendedor, :fechaVenta, :fechaEntrega, "contado", :comentario)
             ');
             $stmt->bindParam(':idCliente', $pedido['idCliente']);
             $stmt->bindParam(':idVendedor', $pedido['idVendedor']);
             $stmt->bindParam(':fechaVenta', $pedido['fechaPedido']);
             $stmt->bindParam(':fechaEntrega', $pedido['fechaEntrega']);
-            $stmt->bindParam(':comentarios', $pedido['comentarios']);
+            $stmt->bindParam(':comentario', $pedido['comentarios']);
             $stmt->execute();
 
             $idVenta = $this->conn->lastInsertId();
@@ -112,7 +112,7 @@ class Pedido extends \Config
 
             // Insert into detalleventa
             $stmt = $this->conn->prepare('
-                INSERT INTO detalleventa (idVenta, idProducto, cantidad, subtotal)
+                INSERT INTO detalleventas (idVenta, idProducto, cantidad, subtotal)
                 VALUES (:idVenta, :idProducto, :cantidad, :subtotal)
             ');
             foreach ($detalles as $detalle) {

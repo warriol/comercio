@@ -2,6 +2,9 @@
 $titulo = 'Crear Ventas para Clientes';
 include_once '../vendor/inicio.html';
 ?>
+<script>
+    precioAtributo = 'precio';
+</script>
 <div class="container my-5">
     <div id="responseMessage" class="mt-3"></div>
 
@@ -25,6 +28,9 @@ include_once '../vendor/inicio.html';
                 </div>
             </div>
             <div class="row">
+                <div class="text-info col-12">
+                    <small>Para una VENTA, la fecha de venta y entrega son la misma.</small>
+                </div>
                 <div class="form-group col-6">
                     <label for="fechaVenta">Fecha de Venta</label>
                     <input type="text" class="form-control" id="fechaVenta" name="fechaVenta"
@@ -32,7 +38,8 @@ include_once '../vendor/inicio.html';
                 </div>
                 <div class="form-group col-6">
                     <label for="fechaEntrega">Fecha de Entrega</label>
-                    <input type="text" class="form-control datepicker" id="fechaEntrega" name="fechaEntrega" required>
+                    <input type="text" class="form-control" id="fechaEntrega" name="fechaEntrega"
+                           value="<?php echo date('Y-m-d'); ?>" readonly>
                 </div>
             </div>
             <div class="form-group">
@@ -84,6 +91,7 @@ include_once '../vendor/inicio.html';
                 <!-- Detalles de productos -->
                 </tbody>
             </table>
+            <button type="submit" class="btn btn-primary">Crear Pedido</button>
             <button type="submit" class="btn btn-primary">Crear Venta</button>
         </form>
     </div>

@@ -51,7 +51,7 @@ include_once '../vendor/inicio.html';
                     tableBody.empty();
 
                     data.forEach(pedido => {
-                        const rowClass = pedido.estado === 'entregado' ? 'table-success' : 'table-warning';
+                        const rowClass = pedido.estado === 1 ? 'table-success' : 'table-warning';
                         const row = `<tr class="${rowClass}">
                             <td>${pedido.cliente}</td>
                             <td>${pedido.vendedor}</td>
