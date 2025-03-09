@@ -1,5 +1,6 @@
 <?php
 $titulo = 'Crear Ventas para Clientes';
+$clase = "bg-warning";
 include_once '../vendor/inicio.html';
 ?>
 <script>
@@ -9,7 +10,6 @@ include_once '../vendor/inicio.html';
     <div id="responseMessage" class="mt-3"></div>
 
     <div id="contentForm">
-        <div class="alert alert-primary" role="alert">Crear Venta para Clientes</div>
         <form id="ventaForm">
             <div class="row">
                 <div class="form-group col-6">
@@ -51,19 +51,19 @@ include_once '../vendor/inicio.html';
             </div>
             <div class="form-group">
                 <label for="comentarios">Comentarios</label>
-                <textarea class="form-control" id="comentarios" name="comentarios" cols="2"></textarea>
+                <textarea class="form-control" id="comentarios" name="comentarios" cols="1"></textarea>
             </div>
             <hr>
             <div class="row justify-content-between">
-                <div class="form-group col-4">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#productoModal">
+                <div class="form-group col-4 d-flex">
+                    <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#productoModal">
                         Agregar Producto
                     </button>
                 </div>
                 <div class="col-4">
                     <div class="row">
-                        <div class="col-6 text-right">
-                            <label for="totalVenta">Total</label>
+                        <div class="col-6 d-flex align-items-center text-right">
+                            <label for="totalVenta" class="w-100">Total</label>
                         </div>
                         <div class="col-6">
                             <div class="input-group mb-3">
@@ -91,7 +91,6 @@ include_once '../vendor/inicio.html';
                 <!-- Detalles de productos -->
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-primary">Crear Pedido</button>
             <button type="submit" class="btn btn-primary">Crear Venta</button>
         </form>
     </div>

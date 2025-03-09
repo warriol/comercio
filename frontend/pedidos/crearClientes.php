@@ -1,12 +1,12 @@
 <?php
 $titulo = 'Crear Pedido para Clientes';
+$clase = "bg-warning";
 include_once '../vendor/inicio.html';
 ?>
 <div class="container my-5">
     <div id="responseMessage" class="mt-3"></div>
 
     <div id="contentForm">
-        <div class="alert alert-primary" role="alert">Crear Pedido para Cliente</div>
         <form id="pedidoForm">
         <div class="row">
             <div class="form-group col-6">
@@ -49,13 +49,15 @@ include_once '../vendor/inicio.html';
         </div>
         <hr>
         <div class="row justify-content-between">
-            <div class="form-group col-4">
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#productoModal">Agregar Producto</button>
+            <div class="form-group col-4 d-flex">
+                <button type="button" class="btn btn-secondary w-100" data-toggle="modal" data-target="#productoModal">
+                    Agregar Producto
+                </button>
             </div>
             <div class="col-4">
                 <div class="row">
-                    <div class="col-6 text-right">
-                        <label for="totalPedido">Total</label>
+                    <div class="col-6 d-flex align-items-center text-right">
+                        <label for="totalPedido" class="w-100">Total</label>
                     </div>
                     <div class="col-6">
                         <div class="input-group mb-3">

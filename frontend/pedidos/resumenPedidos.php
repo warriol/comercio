@@ -1,15 +1,19 @@
 <?php
-$titulo = 'Resumen de Pedidos';
+$titulo = 'Resumen de Pedidos del dìa';
+$clase = "bg-secondary";
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">
-    <h2>Resumen de Pedidos del Día</h2>
     <form id="resumenPedidosForm">
-        <div class="form-group">
-            <label for="fechaPedido">Fecha de Pedido</label>
-            <input type="text" class="form-control datepicker" id="fechaPedido" name="fechaPedido" required>
+        <div class="row">
+            <div class="form-group col-10">
+                <label for="fechaPedido">Fecha de Pedido</label>
+                <input type="text" class="form-control datepicker" id="fechaPedido" name="fechaPedido" required>
+            </div>
+            <div class="col-2 d-flex">
+                <button type="submit" class="btn btn-primary w-100">Buscar</button>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
     <table class="table mt-3" id="resumenPedidosTable">
         <thead>

@@ -1,15 +1,19 @@
 <?php
 $titulo = 'Listar Ventas';
+$clase = "bg-info";
 include_once '../vendor/inicio.html';
 ?>
 <div class="container mt-5">
-    <h2>Listar Ventas del Día</h2>
     <form id="listarVentasForm">
-        <div class="form-group">
-            <label for="fechaVenta">Fecha de Venta</label>
-            <input type="text" class="form-control datepicker" id="fechaVenta" name="fechaVenta" required>
+        <div class="row">
+            <div class="form-group col-10">
+                <label for="fechaVenta">Fecha de Venta</label>
+                <input type="text" class="form-control datepicker" id="fechaVenta" name="fechaVenta" required>
+            </div>
+            <div class="col-2 d-flex">
+                <button type="submit" class="btn btn-primary w-100">Buscar</button>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
     <table class="table mt-3" id="ventasTable">
         <thead>
