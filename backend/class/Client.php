@@ -114,6 +114,17 @@ class Client extends \Config
         return json_encode($result);
     }
 
+    public function listar_clientes_con_ventas_credito() {
+        $query = "SELECT DISTINCT c.* FROM clientes c
+              JOIN ventas v ON c.idCliente = v.idCliente
+              WHERE v.tipoVenta = 'credito'";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return json_encode($result);
+    }
+
     /**
      * @api {get} /clientes/getById.php Obtener
      * @apiName getById
@@ -212,5 +223,4 @@ class Client extends \Config
             return 'Error: ' . $e->getMessage();
         }
     }
-
 }

@@ -35,6 +35,14 @@ include_once '../vendor/inicio.html';
             <td colspan="5" class="text-right">Total Ventas:</td>
             <td id="totalVentas"></td>
         </tr>
+        <tr>
+            <td colspan="5" class="text-right">Total Ventas Contado:</td>
+            <td class="table-success" id="totalVentasContado"></td>
+        </tr>
+        <tr>
+            <td colspan="5" class="text-right">Total Ventas Crédito:</td>
+            <td class="table-warning" id="totalVentasCredito"></td>
+        </tr>
         </tfoot>
     </table>
 </div>
@@ -63,9 +71,12 @@ include_once '../vendor/inicio.html';
                     const tableBody = $('#ventasTable tbody');
                     tableBody.empty();
                     let totalVentas = 0;
+                    let totalVentasContado = 0;
+                    let totalVentasCredito = 0;
 
                     data.forEach(venta => {
-                        const row = `<tr>
+                        const rowClass = venta.tipo === 'contado' ? 'table-success' : 'table-warning';
+                        const row = `<tr class="${rowClass}">
                             <td>${venta.cliente}</td>
                             <td>${venta.vendedor}</td>
                             <td>${venta.producto}</td>
@@ -75,10 +86,17 @@ include_once '../vendor/inicio.html';
                             <td>${venta.total}</td>
                         </tr>`;
                         tableBody.append(row);
+                        if (venta.tipo === 'contado') {
+                            totalVentasContado += parseFloat(venta.total);
+                        } else {
+                            totalVentasCredito += parseFloat(venta.total);
+                        }
                         totalVentas += parseFloat(venta.total);
                     });
 
                     $('#totalVentas').text(totalVentas.toFixed(2));
+                    $('#totalVentasContado').text(totalVentasContado.toFixed(2));
+                    $('#totalVentasCredito').text(totalVentasCredito.toFixed(2));
                 })
                 .catch(error => {
                     console.error('Error:', error);

@@ -49,7 +49,7 @@ class Venta extends \Config
     {
         try {
             $stmt = $this->conn->prepare(
-                'SELECT c.nombre AS cliente, v.nombre AS vendedor, p.nombre AS producto, p.tipo, dv.cantidad, dv.subtotal, dv.subtotal AS total
+                'SELECT c.nombre AS cliente, v.nombre AS vendedor, p.nombre AS producto, p.tipo, dv.cantidad, dv.subtotal, dv.subtotal AS total, ve.tipoVenta as tipo
                 FROM ventas ve
                 JOIN clientes c ON ve.idCliente = c.idCliente
                 JOIN vendedores v ON ve.idVendedor = v.idVendedor
@@ -61,6 +61,37 @@ class Venta extends \Config
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function listar_ventas_credito_por_cliente(int $idCliente)
+    {
+        try {
+            $stmt = $this->conn->prepare(
+                'SELECT ve.idVenta, ve.fechaVenta, ve.fechaEntrega, ve.tipoVenta, dv.idProducto, dv.cantidad, dv.subtotal, dv.subtotal AS total
+                FROM ventas ve
+                JOIN detalleventas dv ON ve.idVenta = dv.idVenta
+                WHERE ve.idCliente = :idCliente AND ve.tipoVenta = "credito"'
+            );
+            $stmt->bindParam(':idCliente', $idCliente);
+            $stmt->execute();
+
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function saldar_deuda(int $idVenta)
+    {
+        try {
+            $stmt = $this->conn->prepare('UPDATE ventas SET tipoVenta = "contado" WHERE idVenta = :idVenta');
+            $stmt->bindParam(':idVenta', $idVenta);
+            $stmt->execute();
+
+            return 'Deuda saldada correctamente';
         } catch (\PDOException $e) {
             return 'Error: ' . $e->getMessage();
         }

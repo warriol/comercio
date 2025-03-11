@@ -55,7 +55,7 @@ class Pedido extends \Config
                 JOIN vendedores v ON p.idVendedor = v.idVendedor
                 JOIN detallepedidos dp ON p.idPedido = dp.idPedido
                 JOIN productos pr ON dp.idProducto = pr.idProducto
-                WHERE p.fechaEntrega = :fechaPedido
+                WHERE p.fechaPedido = :fechaPedido
             ');
             $stmt->bindParam(':fechaPedido', $fechaPedido);
             $stmt->execute();
@@ -86,6 +86,10 @@ class Pedido extends \Config
             $stmt->execute();
             $pedido = $stmt->fetch(\PDO::FETCH_ASSOC);
 
+            /**
+             * Los pedidos cuando son entregados se deben registrar como una venta
+             * esta venta será registrada el día de la ENTREGA
+             */
             // Insert into ventas
             $stmt = $this->conn->prepare('
                 INSERT INTO ventas (idCliente, idVendedor, fechaVenta, fechaEntrega, tipoVenta, comentario)
@@ -93,7 +97,7 @@ class Pedido extends \Config
             ');
             $stmt->bindParam(':idCliente', $pedido['idCliente']);
             $stmt->bindParam(':idVendedor', $pedido['idVendedor']);
-            $stmt->bindParam(':fechaVenta', $pedido['fechaPedido']);
+            $stmt->bindParam(':fechaVenta', $pedido['fechaEntrega']);
             $stmt->bindParam(':fechaEntrega', $pedido['fechaEntrega']);
             $stmt->bindParam(':comentario', $pedido['comentarios']);
             $stmt->execute();

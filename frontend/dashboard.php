@@ -54,6 +54,7 @@
                         <a class="collapse-item" href="ventas/crearClientes.php">Para Clientes</a>
                         <a class="collapse-item" href="ventas/crearComercio.php">Para Comercio</a>
                         <a class="collapse-item" href="ventas/listarVentos.php">Listar</a>
+                        <a class="collapse-item" href="ventas/listarVentasCredito.php">Saldar Crédito</a>
                     </div>
                 </div>
             </li>
@@ -70,7 +71,7 @@
                         <a class="collapse-item" href="pedidos/crearClientes.php">Para Clientes</a>
                         <a class="collapse-item" href="pedidos/crearComercio.php">Para Comercio</a>
                         <a class="collapse-item" href="pedidos/listarPedidos.php">Listar</a>
-                        <a class="collapse-item" href="../pedidos/resumenPedidos.php">Resumen</a>
+                        <a class="collapse-item" href="pedidos/resumenPedidos.php">Resumen</a>
                     </div>
                 </div>
             </li>
