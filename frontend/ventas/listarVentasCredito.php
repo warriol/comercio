@@ -9,7 +9,7 @@ include_once '../vendor/inicio.html';
                     <label for="idCliente">Cliente</label>
                     <input type="text" class="form-control" id="idClienteInput" name="idClienteInput"
                            placeholder="Buscar cliente" required>
-                    <select class="form-control mt-2" id="idCliente" name="idCliente" size="5" style="display: none;">
+                    <select class="form-control mt-2" id="idCliente" name="idCliente" size="5">
                         <!-- Opciones de clientes -->
                     </select>
                 </div>
@@ -27,13 +27,19 @@ include_once '../vendor/inicio.html';
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
-                <th>Total</th>
                 <th>Acción</th>
             </tr>
             </thead>
             <tbody>
             <!-- Detalles de ventas a crédito -->
             </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5" class="text-right"><strong>Total:</strong></td>
+                <td id="totalCredito"></td>
+                <td></td>
+            </tr>
+            </tfoot>
         </table>
     </div>
 
@@ -41,9 +47,8 @@ include_once '../vendor/inicio.html';
     <script>
         $(document).ready(function() {
 
-            // Fetch clients, sellers, and products
+            // Fetch clients and populate the select element
             fetch(URL_BASE + 'comercio/backend/clientes/listarClientesConVentasCredito.php')
-            //fetch(URL_BASE + 'comercio/backend/clientes/listar.php')
                 .then(response => response.json())
                 .then(data => {
                     const clienteSelect = document.getElementById('idCliente');
@@ -60,21 +65,16 @@ include_once '../vendor/inicio.html';
 
                     clienteInput.addEventListener('input', function () {
                         const searchTerm = clienteInput.value.toLowerCase();
-                        clienteSelect.style.display = 'block';
                         clienteSelect.innerHTML = '';
                         clientes.forEach(option => {
                             if (option.text.toLowerCase().includes(searchTerm)) {
                                 clienteSelect.appendChild(option);
                             }
                         });
-                        if (clienteSelect.options.length === 0) {
-                            clienteSelect.style.display = 'none';
-                        }
                     });
 
                     clienteSelect.addEventListener('change', function () {
                         clienteInput.value = clienteSelect.options[clienteSelect.selectedIndex].text;
-                        clienteSelect.style.display = 'none';
                     });
                 });
 
@@ -86,21 +86,26 @@ include_once '../vendor/inicio.html';
                     .then(response => response.json())
                     .then(data => {
                         const tableBody = $('#ventasCreditoTable tbody');
+                        let total = 0;
+                        let lastIdVenta = null;
                         tableBody.empty();
 
                         data.forEach(venta => {
-                            const row = `<tr>
+                            total += parseFloat(venta.subtotal);
+                            const row = `<tr class="${venta.idVenta === lastIdVenta ? 'table-warning' : ''}">
                             <td>${venta.idVenta}</td>
                             <td>${venta.fechaVenta}</td>
                             <td>${venta.fechaEntrega}</td>
-                            <td>${venta.idProducto}</td>
+                            <td>${venta.nombre}</td>
                             <td>${venta.cantidad}</td>
                             <td>${venta.subtotal}</td>
-                            <td>${venta.total}</td>
-                            <td><button class="btn btn-success saldarDeudaBtn" data-id-venta="${venta.idVenta}">Saldar Deuda</button></td>
+                            <td>${venta.idVenta === lastIdVenta ? '' : '<button class="btn btn-success saldarDeudaBtn" data-id-venta="' + venta.idVenta + '">Saldar Deuda</button>'}</td>
                         </tr>`;
                             tableBody.append(row);
+                            lastIdVenta = venta.idVenta;
                         });
+
+                        $('#totalCredito').text(total.toFixed(2));
 
                         $('.saldarDeudaBtn').on('click', function() {
                             const idVenta = $(this).data('id-venta');

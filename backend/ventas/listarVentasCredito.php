@@ -17,7 +17,7 @@ if ($idCliente) {
 
     //header('Content-Type: application/json');
     http_response_code(200);
-    echo $result;
+    echo json_encode($result);
 } else {
     http_response_code(400);
     echo json_encode(["message" => "Bad Request"]);

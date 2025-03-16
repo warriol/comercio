@@ -34,10 +34,38 @@ include_once '../vendor/inicio.html';
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd',
-            todayHighlight: true
-        });
+        let fechasPedidos = [];
+
+        // Fetch the dates with orders
+        fetch(`<?= $URL_BASE; ?>comercio/backend/pedidos/listarFechasPedidos.php`)
+            .then(response => response.json())
+            .then(data => {
+                fechasPedidos = data.map(date => {
+                    const parsedDate = new Date(date);
+                    parsedDate.setMinutes(parsedDate.getMinutes() + parsedDate.getTimezoneOffset());
+                    return parsedDate;
+                });
+                initializeDatepicker();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        function initializeDatepicker() {
+            console.log(fechasPedidos);
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                todayHighlight: true,
+                beforeShowDay: function(date) {
+                    const highlight = fechasPedidos.some(d =>
+                        d.getFullYear() === date.getFullYear() &&
+                        d.getMonth() === date.getMonth() &&
+                        d.getDate() === date.getDate()
+                    );
+                    return highlight ? { classes: 'highlight' } : {};
+                }
+            });
+        }
 
         $('#resumenPedidosForm').on('submit', function(event) {
             event.preventDefault();
@@ -65,10 +93,10 @@ include_once '../vendor/inicio.html';
 
                     Object.values(resumen).forEach(item => {
                         const row = `<tr>
-                            <td>${item.producto}</td>
-                            <td>${item.tipo}</td>
-                            <td>${item.totalCantidad}</td>
-                        </tr>`;
+                        <td>${item.producto}</td>
+                        <td>${item.tipo}</td>
+                        <td>${item.totalCantidad}</td>
+                    </tr>`;
                         tableBody.append(row);
                     });
                 })

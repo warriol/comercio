@@ -108,13 +108,15 @@ class Client extends \Config
      */
     public function listar_cliente_todos()
     {
-        $stmt = $this->conn->prepare('SELECT * FROM clientes');
+        $query = "SELECT * FROM clientes";
+        $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return json_encode($result);
     }
 
-    public function listar_clientes_con_ventas_credito() {
+    public function listar_clientes_con_ventas_credito()
+    {
         $query = "SELECT DISTINCT c.* FROM clientes c
               JOIN ventas v ON c.idCliente = v.idCliente
               WHERE v.tipoVenta = 'credito'";

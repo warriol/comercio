@@ -3,12 +3,6 @@ require_once "../cors.php";
 require_once "../autoload.php";
 use class\Client;
 
-// Inicializar variables (si no existen, se asigna null)
-$nombre = $_GET["nombre"] ?? null;
-$apellido = $_GET["apellido"] ?? null;
-$telefono = $_GET["telefono"] ?? null;
-$correo = $_GET["correo"] ?? null;
-
 $clientes = new Client();
 
 if ($_SERVER["REQUEST_METHOD"] != "GET") {
@@ -17,6 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] != "GET") {
     echo json_encode(["message" => "Método no permitido"]);
     exit;
 }
+
+// Inicializar variables (si no existen, se asigna null)
+$nombre = $_GET["nombre"] ?? null;
+$apellido = $_GET["apellido"] ?? null;
+$telefono = $_GET["telefono"] ?? null;
+$correo = $_GET["correo"] ?? null;
 
 // Lógica para listar clientes
 if ($nombre === null && $apellido === null && $telefono === null && $correo === null) {

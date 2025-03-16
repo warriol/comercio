@@ -53,7 +53,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="ventas/crearClientes.php">Para Clientes</a>
                         <a class="collapse-item" href="ventas/crearComercio.php">Para Comercio</a>
-                        <a class="collapse-item" href="ventas/listarVentos.php">Listar</a>
+                        <a class="collapse-item" href="ventas/listarVentas.php">Listar</a>
                         <a class="collapse-item" href="ventas/listarVentasCredito.php">Saldar Crédito</a>
                     </div>
                 </div>

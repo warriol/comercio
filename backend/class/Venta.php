@@ -70,10 +70,11 @@ class Venta extends \Config
     {
         try {
             $stmt = $this->conn->prepare(
-                'SELECT ve.idVenta, ve.fechaVenta, ve.fechaEntrega, ve.tipoVenta, dv.idProducto, dv.cantidad, dv.subtotal, dv.subtotal AS total
-                FROM ventas ve
-                JOIN detalleventas dv ON ve.idVenta = dv.idVenta
-                WHERE ve.idCliente = :idCliente AND ve.tipoVenta = "credito"'
+                'SELECT ve.idVenta, ve.fechaVenta, ve.fechaEntrega, ve.tipoVenta, CONCAT(p.nombre, " [", p.precio, " $]") AS nombre, dv.cantidad, dv.subtotal
+                    FROM ventas ve
+                    JOIN detalleventas dv ON ve.idVenta = dv.idVenta
+                    JOIN productos p ON dv.idProducto = p.idProducto
+                    WHERE ve.idCliente = :idCliente AND ve.tipoVenta = "credito"'
             );
             $stmt->bindParam(':idCliente', $idCliente);
             $stmt->execute();

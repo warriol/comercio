@@ -55,12 +55,24 @@ class Pedido extends \Config
                 JOIN vendedores v ON p.idVendedor = v.idVendedor
                 JOIN detallepedidos dp ON p.idPedido = dp.idPedido
                 JOIN productos pr ON dp.idProducto = pr.idProducto
-                WHERE p.fechaPedido = :fechaPedido
+                WHERE p.fechaEntrega = :fechaPedido
             ');
             $stmt->bindParam(':fechaPedido', $fechaPedido);
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function listar_fechas_pedidos()
+    {
+        try {
+            $stmt = $this->conn->prepare('SELECT DISTINCT fechaEntrega FROM pedidos');
+            $stmt->execute();
+
+            return $stmt->fetchAll(\PDO::FETCH_COLUMN);
         } catch (\PDOException $e) {
             return 'Error: ' . $e->getMessage();
         }
@@ -135,4 +147,5 @@ class Pedido extends \Config
             return 'Error: ' . $e->getMessage();
         }
     }
+
 }
