@@ -73,7 +73,8 @@ include_once '../vendor/inicio.html';
         fetch(url, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
             }
         })
             .then(response => response.json())

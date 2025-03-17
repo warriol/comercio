@@ -1,6 +1,7 @@
 <?php
     abstract class Config {
         protected readonly string $key;
+        protected readonly string $secretKey;
         private $debug = true;
         private $DB_Host;
         private $DB_User;
@@ -8,7 +9,6 @@
         private $DB_Name;
         private $conexion;
         private $rutaEnv = '../.env';
-
 
         public function __construct() {
             $this->debug("INICIO", "------------------------------------------------------//////");
@@ -41,6 +41,7 @@
                 $this->setEnvVariable(trim($name), trim($value));
             }
         }
+
         private function setEnvVariable($name, $value): void {
             switch ($name) {
                 case 'DB_HOST':
@@ -54,6 +55,9 @@
                     break;
                 case 'DB_NAME':
                     $this->DB_Name = $this->desencriptarTexto($value);
+                    break;
+                case 'SECRET_KEY':
+                    $this->secretKey = $this->desencriptarTexto($value);
                     break;
             }
         }
@@ -99,6 +103,24 @@
 
         public function getConnection() {
             return $this->conexion;
+        }
+
+        public function estaAutenticado(): void {
+            $headers = apache_request_headers();
+            if (!isset($headers['Authorization'])) {
+                http_response_code(401);
+                echo json_encode(["message" => "Unauthorized"]);
+                exit;
+            }
+
+            $authToken = $headers['Authorization'];
+            $validToken = $this->secretKey;
+
+            if ($authToken !== $validToken) {
+                http_response_code(401);
+                echo json_encode(["message" => "Unauthorized"]);
+                exit;
+            }
         }
 
         // debug

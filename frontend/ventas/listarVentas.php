@@ -65,7 +65,13 @@ include_once '../vendor/inicio.html';
             event.preventDefault();
             const fechaVenta = $('#fechaVenta').val();
 
-            fetch(`<?= $URL_BASE; ?>comercio/backend/ventas/listar.php?fechaVenta=${fechaVenta}`)
+            fetch(`<?= $URL_BASE; ?>comercio/backend/ventas/listar.php?fechaVenta=${fechaVenta}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': '<?= $_SESSION['token']; ?>'
+                }
+            })
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = $('#ventasTable tbody');

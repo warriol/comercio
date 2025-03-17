@@ -74,7 +74,8 @@ include_once '../vendor/inicio.html';
 
         // Realizar la petición
         fetch(url, {
-            method: 'PUT'
+            method: 'PUT',
+            'Authorization': '<?= $_SESSION['token']; ?>'
         })
         .then(response => {
             if (!response.ok) {

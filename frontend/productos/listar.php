@@ -76,7 +76,11 @@ include_once '../vendor/inicio.html';
     $('#confirmDeleteBtn').on('click', function() {
         const idProducto = $(this).data('id');
         fetch(`<?= $URL_BASE; ?>comercio/backend/productos/delete.php?idProducto=${idProducto}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
         })
             .then(response => {
                 if (response.ok) {
@@ -109,7 +113,8 @@ include_once '../vendor/inicio.html';
         fetch(url, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
             }
         })
             .then(response => response.json())

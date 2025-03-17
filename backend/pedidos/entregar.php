@@ -1,7 +1,13 @@
 <?php
 require_once "../cors.php";
 require_once "../autoload.php";
+
 use class\Pedido;
+use class\Auth;
+
+// Verificar si el usuario está autenticado
+$auth = new Auth();
+$auth->estaAutenticado();
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     http_response_code(405);

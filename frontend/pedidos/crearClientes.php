@@ -140,8 +140,19 @@ include_once '../vendor/inicio.html';
             todayHighlight: true
         });
 
+        const urlCli = new URL('<?= $URL_BASE; ?>comercio/backend/clientes/listar.php');
+        const urlVen = new URL('<?= $URL_BASE; ?>comercio/backend/vendedores/listar.php');
+        const urlPro = new URL('<?= $URL_BASE; ?>comercio/backend/productos/listar.php');
+        const urlPed = new URL('<?= $URL_BASE; ?>comercio/backend/pedidos/create.php');
+
         // Fetch clients, sellers, and products
-        fetch('<?= $URL_BASE; ?>comercio/backend/clientes/listar.php')
+        fetch(urlCli, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 const clienteSelect = document.getElementById('idCliente');
@@ -176,7 +187,13 @@ include_once '../vendor/inicio.html';
                 });
             });
 
-        fetch('<?= $URL_BASE; ?>comercio/backend/vendedores/listar.php')
+        fetch(urlVen, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 const vendedorSelect = document.getElementById('idVendedor');
@@ -188,7 +205,13 @@ include_once '../vendor/inicio.html';
                 });
             });
 
-        fetch('<?= $URL_BASE; ?>comercio/backend/productos/listar.php')
+        fetch(urlPro, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 const productoSelect = document.getElementById('productoSelect');
@@ -289,9 +312,13 @@ include_once '../vendor/inicio.html';
             }
             formData.append('detalles', JSON.stringify(detalles));
 
-            fetch('<?= $URL_BASE; ?>comercio/backend/pedidos/create.php', {
+            fetch(urlPed, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': '<?= $_SESSION['token']; ?>'
+                }
             })
                 .then(response => response.json())
                 .then(data => {

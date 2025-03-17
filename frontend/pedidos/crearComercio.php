@@ -140,7 +140,13 @@ include_once '../vendor/inicio.html';
         });
 
         // Fetch clients, sellers, and products
-        fetch('<?= $URL_BASE; ?>comercio/backend/clientes/listar.php')
+        fetch('<?= $URL_BASE; ?>comercio/backend/clientes/listar.php', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 const clienteSelect = document.getElementById('idCliente');
@@ -175,7 +181,13 @@ include_once '../vendor/inicio.html';
                 });
             });
 
-        fetch('<?= $URL_BASE; ?>comercio/backend/vendedores/listar.php')
+        fetch('<?= $URL_BASE; ?>comercio/backend/vendedores/listar.php', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 const vendedorSelect = document.getElementById('idVendedor');
@@ -187,7 +199,13 @@ include_once '../vendor/inicio.html';
                 });
             });
 
-        fetch('<?= $URL_BASE; ?>comercio/backend/productos/listar.php')
+        fetch('<?= $URL_BASE; ?>comercio/backend/productos/listar.php', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 const productoSelect = document.getElementById('productoSelect');
@@ -291,7 +309,11 @@ include_once '../vendor/inicio.html';
 
             fetch('<?= $URL_BASE; ?>comercio/backend/pedidos/create.php', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': '<?= $_SESSION['token']; ?>'
+                }
             })
                 .then(response => response.json())
                 .then(data => {

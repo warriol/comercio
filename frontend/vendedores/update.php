@@ -27,7 +27,13 @@ include_once '../vendor/inicio.html';
 </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-        fetch(`<?= $URL_BASE; ?>comercio/backend/vendedores/getById.php?idVendedor=<?= $idVendedor; ?>`)
+        fetch(`<?= $URL_BASE; ?>comercio/backend/vendedores/getById.php?idVendedor=<?= $idVendedor; ?>`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -56,7 +62,8 @@ include_once '../vendor/inicio.html';
             fetch(url, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': '<?= $_SESSION['token']; ?>'
                 }
             })
                 .then(response => response.json())

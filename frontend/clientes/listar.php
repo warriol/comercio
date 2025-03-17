@@ -71,7 +71,8 @@ include_once '../vendor/inicio.html';
     $('#confirmDeleteBtn').on('click', function() {
         const idCliente = $(this).data('id');
         fetch(`<?= $URL_BASE; ?>comercio/backend/clientes/delete.php?idCliente=${idCliente}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            'Authorization': '<?= $_SESSION['token']; ?>'
         })
             .then(response => {
                 if (response.ok) {
@@ -99,6 +100,7 @@ include_once '../vendor/inicio.html';
 
         // Construir la URL con parámetros GET
         const url = new URL('<?= $URL_BASE; ?>comercio/backend/clientes/listar.php');
+
         const params = {};
         if (nombre) params.nombre = nombre;
         if (apellido) params.apellido = apellido;
@@ -110,7 +112,8 @@ include_once '../vendor/inicio.html';
         fetch(url, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
             }
         })
             .then(response => response.json())

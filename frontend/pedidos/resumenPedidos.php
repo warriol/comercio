@@ -37,7 +37,13 @@ include_once '../vendor/inicio.html';
         let fechasPedidos = [];
 
         // Fetch the dates with orders
-        fetch(`<?= $URL_BASE; ?>comercio/backend/pedidos/listarFechasPedidos.php`)
+        fetch(`<?= $URL_BASE; ?>comercio/backend/pedidos/listarFechasPedidos.php`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 fechasPedidos = data.map(date => {
@@ -71,7 +77,13 @@ include_once '../vendor/inicio.html';
             event.preventDefault();
             const fechaPedido = $('#fechaPedido').val();
 
-            fetch(`<?= $URL_BASE; ?>comercio/backend/pedidos/listar.php?fechaPedido=${fechaPedido}`)
+            fetch(`<?= $URL_BASE; ?>comercio/backend/pedidos/listar.php?fechaPedido=${fechaPedido}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': '<?= $_SESSION['token']; ?>'
+                }
+            })
                 .then(response => response.json())
                 .then(data => {
                     const resumen = {};

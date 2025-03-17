@@ -52,7 +52,13 @@ include_once '../vendor/inicio.html';
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        fetch(`<?= $URL_BASE; ?>comercio/backend/productos/getById.php?idProducto=<?= $idProducto; ?>`)
+        fetch(`<?= $URL_BASE; ?>comercio/backend/productos/getById.php?idProducto=<?= $idProducto; ?>`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 document.getElementById('nombre').value = data.nombre;
@@ -89,7 +95,11 @@ include_once '../vendor/inicio.html';
 
             fetch(url, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': '<?= $_SESSION['token']; ?>'
+                }
             })
                 .then(response => response.json())
                 .then(data => {

@@ -42,7 +42,8 @@ include_once '../vendor/inicio.html';
             fetch('<?= $URL_BASE; ?>comercio/backend/clientes/create.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': '<?= $_SESSION['token']; ?>'
                 },
                 body: JSON.stringify(formData)
             })

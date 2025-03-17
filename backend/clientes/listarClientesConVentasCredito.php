@@ -1,8 +1,15 @@
 <?php
 require_once "../cors.php";
 require_once "../autoload.php";
-use class\Client;
 
+use class\Client;
+use class\Auth;
+
+// Verificar si el usuario está autenticado
+$auth = new Auth();
+$auth->estaAutenticado();
+
+// Instanciar la clase Client
 $clientes = new Client();
 
 if ($_SERVER["REQUEST_METHOD"] != "GET") {

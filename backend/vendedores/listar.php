@@ -1,7 +1,13 @@
 <?php
 require_once "../cors.php";
 require_once "../autoload.php";
+
 use class\Vendedor;
+use class\Auth;
+
+// Verificar si el usuario está autenticado
+$auth = new Auth();
+$auth->estaAutenticado();
 
 // Inicializar variables (si no existen, se asigna null)
 $nombre = $_GET["nombre"] ?? null;

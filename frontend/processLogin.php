@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo $result['error'];
     } else {
         $_SESSION['user'] = $email;
+        $_SESSION['token'] = 'WILSON';
         header('Location: dashboard.php');
         exit();
     }
