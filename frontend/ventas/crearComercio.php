@@ -143,7 +143,7 @@ include_once '../vendor/inicio.html';
         });
 
         // Fetch clients, sellers, and products
-        fetch(URL_BASE + 'comercio/backend/clientes/listar.php', {
+        fetch(URL_BASE + 'clientes/listar.php', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ include_once '../vendor/inicio.html';
                 });
             });
 
-        fetch(URL_BASE + 'comercio/backend/vendedores/listar.php', {
+        fetch(URL_BASE + 'vendedores/listar.php', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ include_once '../vendor/inicio.html';
                 });
             });
 
-        fetch(URL_BASE + 'comercio/backend/productos/listar.php', {
+        fetch(URL_BASE + 'productos/listar.php', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -310,7 +310,7 @@ include_once '../vendor/inicio.html';
             }
             formData.append('detalles', JSON.stringify(detalles));
 
-            fetch(URL_BASE + 'comercio/backend/ventas/create.php', {
+            fetch(URL_BASE + 'ventas/create.php', {
                 method: 'POST',
                 body: formData,
                 headers: {

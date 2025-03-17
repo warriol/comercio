@@ -37,7 +37,7 @@ include_once '../vendor/inicio.html';
 <script>
 
     // Obtener el cliente por ID
-    fetch(`<?= $URL_BASE; ?>comercio/backend/clientes/getById.php?idCliente=<?= $idCliente; ?>`)
+    fetch(`<?= $URL_BASE; ?>clientes/getById.php?idCliente=<?= $idCliente; ?>`)
     .then(response => response.json())
     .then(data => {
         document.getElementById('nombre').value = data.nombre;
@@ -63,7 +63,7 @@ include_once '../vendor/inicio.html';
         document.getElementById('responseMessage').innerHTML = '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>';
 
         // Construir la URL con parámetros GET
-        const url = new URL('<?= $URL_BASE; ?>comercio/backend/clientes/update.php');
+        const url = new URL('<?= $URL_BASE; ?>clientes/update.php');
         const params = {};
         params.idCliente = <?= $idCliente; ?>;
         if (nombre) params.nombre = nombre;
@@ -75,7 +75,9 @@ include_once '../vendor/inicio.html';
         // Realizar la petición
         fetch(url, {
             method: 'PUT',
-            'Authorization': '<?= $_SESSION['token']; ?>'
+            headers: {
+                'Authorization': '<?= $_SESSION['token']; ?>'
+            }
         })
         .then(response => {
             if (!response.ok) {

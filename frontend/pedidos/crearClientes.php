@@ -140,10 +140,10 @@ include_once '../vendor/inicio.html';
             todayHighlight: true
         });
 
-        const urlCli = new URL('<?= $URL_BASE; ?>comercio/backend/clientes/listar.php');
-        const urlVen = new URL('<?= $URL_BASE; ?>comercio/backend/vendedores/listar.php');
-        const urlPro = new URL('<?= $URL_BASE; ?>comercio/backend/productos/listar.php');
-        const urlPed = new URL('<?= $URL_BASE; ?>comercio/backend/pedidos/create.php');
+        const urlCli = new URL('<?= $URL_BASE; ?>clientes/listar.php');
+        const urlVen = new URL('<?= $URL_BASE; ?>vendedores/listar.php');
+        const urlPro = new URL('<?= $URL_BASE; ?>productos/listar.php');
+        const urlPed = new URL('<?= $URL_BASE; ?>pedidos/create.php');
 
         // Fetch clients, sellers, and products
         fetch(urlCli, {

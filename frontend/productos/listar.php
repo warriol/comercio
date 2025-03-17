@@ -75,7 +75,7 @@ include_once '../vendor/inicio.html';
 
     $('#confirmDeleteBtn').on('click', function() {
         const idProducto = $(this).data('id');
-        fetch(`<?= $URL_BASE; ?>comercio/backend/productos/delete.php?idProducto=${idProducto}`, {
+        fetch(`<?= $URL_BASE; ?>productos/delete.php?idProducto=${idProducto}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ include_once '../vendor/inicio.html';
         const nombre = document.getElementById('nombre').value.trim();
         const tipo = document.getElementById('tipo').value.trim();
 
-        const url = new URL('<?= $URL_BASE; ?>comercio/backend/productos/listar.php');
+        const url = new URL('<?= $URL_BASE; ?>productos/listar.php');
         const params = {};
         if (nombre) params.nombre = nombre;
         if (tipo) params.tipo = tipo;
@@ -146,7 +146,7 @@ include_once '../vendor/inicio.html';
                             <td>${producto.precio}</td>
                             <td>${producto.precioEsp}</td>
                             <td>${producto.tipo}</td>
-                            <td><img src="<?= $URL_BASE; ?>comercio/backend/imagenes/${producto.imagen}" alt="${producto.nombre}" width="50"></td>
+                            <td><img src="<?= $URL_BASE; ?>imagenes/${producto.imagen}" alt="${producto.nombre}" width="50"></td>
                             <td>
                                 <a href="update.php?idProducto=${producto.idProducto}" class="btn btn-primary">Editar</a>
                                 ${btnProducto}

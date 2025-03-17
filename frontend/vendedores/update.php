@@ -27,7 +27,7 @@ include_once '../vendor/inicio.html';
 </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-        fetch(`<?= $URL_BASE; ?>comercio/backend/vendedores/getById.php?idVendedor=<?= $idVendedor; ?>`, {
+        fetch(`<?= $URL_BASE; ?>vendedores/getById.php?idVendedor=<?= $idVendedor; ?>`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ include_once '../vendor/inicio.html';
             const telefono = document.getElementById('telefono').value.trim();
 
             // Construir la URL con parametros GET
-            const url = new URL('<?= $URL_BASE; ?>comercio/backend/vendedores/update.php');
+            const url = new URL('<?= $URL_BASE; ?>vendedores/update.php');
             const params = {};
             params.idVendedor = <?= $idVendedor; ?>;
             params.nombre = nombre;

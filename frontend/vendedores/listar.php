@@ -63,7 +63,7 @@ include_once '../vendor/inicio.html';
         let telefono = document.getElementById('telefono').value;
 
         // Construir la URL con parámetros GET
-        let url = new URL(URL_BASE+'comercio/backend/vendedores/listar.php');
+        let url = new URL(URL_BASE+'vendedores/listar.php');
         const params = {};
         if (nombre) params.nombre = nombre;
         if (telefono) params.telefono = telefono;

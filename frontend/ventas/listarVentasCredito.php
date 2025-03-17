@@ -48,7 +48,7 @@ include_once '../vendor/inicio.html';
         $(document).ready(function() {
 
             // Fetch clients and populate the select element
-            fetch(URL_BASE + 'comercio/backend/clientes/listarClientesConVentasCredito.php', {
+            fetch(URL_BASE + 'clientes/listarClientesConVentasCredito.php', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ include_once '../vendor/inicio.html';
                 event.preventDefault();
                 const idCliente = $('#idCliente').val();
 
-                fetch(URL_BASE + `comercio/backend/ventas/listarVentasCredito.php?idCliente=${idCliente}`, {
+                fetch(URL_BASE + `ventas/listarVentasCredito.php?idCliente=${idCliente}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ include_once '../vendor/inicio.html';
             });
 
             function saldarDeuda(idVenta) {
-                fetch(URL_BASE + `comercio/backend/ventas/saldarDeuda.php?idVenta=${idVenta}`, {
+                fetch(URL_BASE + `ventas/saldarDeuda.php?idVenta=${idVenta}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

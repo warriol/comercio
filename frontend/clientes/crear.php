@@ -39,7 +39,7 @@ include_once '../vendor/inicio.html';
             // Show spinner
             document.getElementById('responseMessage').innerHTML = '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>';
 
-            fetch('<?= $URL_BASE; ?>comercio/backend/clientes/create.php', {
+            fetch('<?= $URL_BASE; ?>clientes/create.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

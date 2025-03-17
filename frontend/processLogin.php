@@ -5,9 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = hash('sha512', $_POST['password']);
 
-    $URL_BASE = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'https://localhost/' : 'https://192.168.1.9/';
+    $URL_BASE = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'https://localhost/' : 'https://backend.panaderia.warriol.site/';
 
-    $url = $URL_BASE . 'comercio/backend/usuarios/login.php';
+    $url = $URL_BASE . 'usuarios/login.php';
 
     $data = json_encode(['email' => $email, 'password' => $password]);
 

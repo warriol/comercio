@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-$URL_BASE = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'https://localhost/' : 'https://192.168.1.9/';
-header('Location: '.$URL_BASE.'comercio/frontend/index.php');
+$URL_BASE = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'https://localhost/' : 'https://backend.panaderia.warriol.site/';
+header('Location: '.$URL_BASE.'index.php');
 exit();

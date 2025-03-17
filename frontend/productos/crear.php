@@ -52,7 +52,7 @@ include_once '../vendor/inicio.html';
         formData.append('tipo', document.getElementById('tipo').value);
         formData.append('imagen', document.getElementById('imagen').files[0]);
 
-        fetch('<?= $URL_BASE; ?>comercio/backend/productos/create.php', {
+        fetch('<?= $URL_BASE; ?>productos/create.php', {
             method: 'POST',
             body: formData,
             headers: {

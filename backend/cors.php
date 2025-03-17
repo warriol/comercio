@@ -1,10 +1,14 @@
 <?php
 header("Content-Type: application/json");
 
-header("Access-Control-Allow-Origin: https://localhost");
-header("Access-Control-Allow-Origin: https://192.168.1.9");
-header("Access-Control-Allow-Origin: https://192.168.1.20");
-//header("Access-Control-Allow-Origin: *"); // warriol.site");
+$allowed_origins = [
+    "https://frontend.panaderia.warriol.site",
+    "https://backend.panaderia.warriol.site"
+];
+
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
+    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+}
 
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");

@@ -52,7 +52,7 @@ include_once '../vendor/inicio.html';
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        fetch(`<?= $URL_BASE; ?>comercio/backend/productos/getById.php?idProducto=<?= $idProducto; ?>`, {
+        fetch(`<?= $URL_BASE; ?>productos/getById.php?idProducto=<?= $idProducto; ?>`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ include_once '../vendor/inicio.html';
                 document.getElementById('tipo').value = data.tipo;
                 // Create an img element to display the image
                 const imgElement = document.createElement('img');
-                imgElement.src = `/comercio/backend/imagenes/${data.imagen}`;
+                imgElement.src = `/imagenes/${data.imagen}`;
                 imgElement.alt = data.nombre;
                 imgElement.width = 100; // Set the desired width
                 document.getElementById('imagen').parentNode.appendChild(imgElement);
@@ -79,7 +79,7 @@ include_once '../vendor/inicio.html';
         document.getElementById('productoForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const url = new URL('<?= $URL_BASE; ?>comercio/backend/productos/update.php');
+            const url = new URL('<?= $URL_BASE; ?>productos/update.php');
             const formData = new FormData();
 
             formData.append('_method', 'PUT');  // Simulamos el método PUT

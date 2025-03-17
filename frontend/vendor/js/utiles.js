@@ -5,7 +5,7 @@ $(document).ready(function() {
     });
 
     // Fetch clients, sellers, and products
-    fetch(URL_BASE + 'comercio/backend/clientes/listar.php')
+    fetch(URL_BASE + 'clientes/listar.php')
         .then(response => response.json())
         .then(data => {
             const clienteSelect = document.getElementById('idCliente');
@@ -40,7 +40,7 @@ $(document).ready(function() {
             });
         });
 
-    fetch(URL_BASE + 'comercio/backend/vendedores/listar.php')
+    fetch(URL_BASE + 'vendedores/listar.php')
         .then(response => response.json())
         .then(data => {
             const vendedorSelect = document.getElementById('idVendedor');
@@ -52,7 +52,7 @@ $(document).ready(function() {
             });
         });
 
-    fetch(URL_BASE + 'comercio/backend/productos/listar.php')
+    fetch(URL_BASE + 'productos/listar.php')
         .then(response => response.json())
         .then(data => {
             const productoSelect = document.getElementById('productoSelect');
@@ -154,7 +154,7 @@ $(document).ready(function() {
         }
         formData.append('detalles', JSON.stringify(detalles));
 
-        fetch(URL_BASE + 'comercio/backend/ventas/create.php', {
+        fetch(URL_BASE + 'ventas/create.php', {
             method: 'POST',
             body: formData
         })
