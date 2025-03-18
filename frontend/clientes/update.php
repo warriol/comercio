@@ -2,7 +2,7 @@
 if (isset($_GET["idCliente"])) {
     $idCliente = $_GET["idCliente"];
 } else {
-    header("Location: /comercio/frontend/clientes/listar.php");
+    header("Location: /clientes/listar.php");
     exit;
 }
 ?>
