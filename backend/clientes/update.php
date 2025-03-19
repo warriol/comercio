@@ -5,7 +5,6 @@ require_once "../autoload.php";
 use class\Client;
 use class\Auth;
 
-// Verificar si el usuario está autenticado
 $auth = new Auth();
 $auth->estaAutenticado();
 
@@ -15,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] != "PUT") {
     exit;
 }
 
-// Inicializar variables (si no existen, se asigna null)
 $idCliente = $_GET["idCliente"] ?? null;
 $nombre = $_GET["nombre"] ?? null;
 $apellido = $_GET["apellido"] ?? null;
@@ -28,7 +26,6 @@ if ($idCliente === null) {
     exit;
 }
 
-// Llamar al método sin importar si los valores están vacíos
 $clientes = new Client();
 $retorno = $clientes->update_cliente($idCliente, $nombre, $apellido, $telefono, $correo);
 

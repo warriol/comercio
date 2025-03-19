@@ -177,8 +177,8 @@ class Client extends \Config
     public function update_cliente(mixed $idCliente, mixed $nombre, mixed $apellido, mixed $telefono, mixed $correo)
     {
         $retorno = [
-            'header' => 'HTTP/1.1 201 Cliente actualizado correctamente',
-            'message' => 'Cliente ' . $nombre . ' ' . $apellido . ' creado.'
+            'header' => 'HTTP/1.1 200 Cliente actualizado correctamente',
+            'message' => 'Cliente ' . $nombre . ' ' . $apellido . ' actualizado.'
         ];
         try {
             $stmt = $this->conn->prepare('UPDATE clientes SET nombre = :nombre, apellido = :apellido, telefono = :telefono, correo = :correo WHERE idCliente = :idCliente');

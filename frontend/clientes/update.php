@@ -83,14 +83,15 @@ include_once '../vendor/inicio.html';
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            console.log(response);
             return response.json();
         })
         .then(data => {
+            console.log(data);
             document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
             document.getElementById('clienteForm').reset(); // Reset form
         })
         .catch(error => {
+            console.error('Error:', error); // Agregar un log para el error
             document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al actualizar el cliente</div>`;
         });
     });
