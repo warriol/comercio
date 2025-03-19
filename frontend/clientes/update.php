@@ -2,11 +2,11 @@
 if (isset($_GET["idCliente"])) {
     $idCliente = $_GET["idCliente"];
 } else {
-    header("Location: /clientes/listar.php");
+    $PREFIJO = ($_SERVER['HTTP_HOST'] == 'localhost') ? '/comercio/frontend' : '';
+    header("Location: ".$PREFIJO."/clientes/listar.php");
     exit;
 }
-?>
-<?php
+
 $titulo = 'Actualizar Cliente';
 include_once '../vendor/inicio.html';
 ?>

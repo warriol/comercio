@@ -2,11 +2,11 @@
 if (isset($_GET['idVendedor'])) {
     $idVendedor = $_GET['idVendedor'];
 } else {
-    header('Location: /vendedores/listar.php');
+    $PREFIJO = ($_SERVER['HTTP_HOST'] == 'localhost') ? '/comercio/frontend' : '';
+    header("Location: ".$PREFIJO."/vendedores/listar.php");
     exit;
 }
-?>
-<?php
+
 $titulo = 'Actualizar  Vendedor';
 include_once '../vendor/inicio.html';
 ?>

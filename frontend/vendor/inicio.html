@@ -1,7 +1,8 @@
 <?php
     // $URL_BASE = 'https://192.168.1.9/';
 
-    $URL_BASE = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'https://localhost/' : 'https://backend.panaderia.warriol.site/';
+    $PREFIJO = ($_SERVER['HTTP_HOST'] == 'localhost') ? '/comercio/frontend' : '';
+    $URL_BASE = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'https://localhost/comercio/backend/' : 'https://backend.panaderia.warriol.site/';
 
     include '../session.php';
 
@@ -30,7 +31,8 @@
 
     <script>
         const URL_BASE = '<?= $URL_BASE ?>';
-        console.log('url: ' + URL_BASE);
+        prefijo = '<?= $PREFIJO ?>';
+        console.log('url: ' + URL_BASE + prefijo);
     </script>
 
 </head>

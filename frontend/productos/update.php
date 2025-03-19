@@ -2,11 +2,11 @@
 if (isset($_GET["idProducto"])) {
     $idProducto = $_GET["idProducto"];
 } else {
-    header("Location: /productos/listar.php");
+    $PREFIJO = ($_SERVER['HTTP_HOST'] == 'localhost') ? '/comercio/frontend' : '';
+    header("Location: ".$PREFIJO."/productos/listar.php");
     exit;
 }
-?>
-<?php
+
 $titulo = 'Acualizar Productos';
 include_once '../vendor/inicio.html';
 ?>

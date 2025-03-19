@@ -26,5 +26,5 @@ if (isset($data["idCliente"]) && isset($data["idVendedor"]) && isset($data["fech
     echo json_encode(["message" => $retorno]);
 } else {
     http_response_code(400);
-    echo json_encode(["message" => "Bad Request"]);
+    echo json_encode(["message" => "Bad Request" . json_encode($data)]);
 }
