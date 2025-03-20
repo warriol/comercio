@@ -318,7 +318,6 @@ include_once '../vendor/inicio.html';
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': '<?= $_SESSION['token']; ?>'
                 }
             })
