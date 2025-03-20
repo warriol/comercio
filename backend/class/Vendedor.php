@@ -121,7 +121,7 @@ class Vendedor extends \Config
     {
         $retorno = [
             'header' => 'HTTP/1.1 200 Vendedor actualizado correctamente',
-            'message' => 'Vendedor actualizado correctamente'
+            'message' => 'Vendedor: '. $nombre .' actualizado correctamente'
         ];
         try {
             $stmt = $this->conn->prepare('UPDATE vendedores SET nombre = :nombre, telefono = :telefono WHERE idVendedor = :idVendedor');

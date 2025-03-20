@@ -88,7 +88,7 @@ include_once '../vendor/inicio.html';
         .then(data => {
             console.log(data);
             document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
-            document.getElementById('clienteForm').reset(); // Reset form
+            document.getElementById('editarClienteForm').reset(); // Reset form
         })
         .catch(error => {
             console.error('Error:', error); // Agregar un log para el error

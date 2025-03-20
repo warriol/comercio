@@ -121,6 +121,10 @@ class Product extends \Config
 
     public function update_producto(mixed $idProducto, mixed $nombre, string $imagen, mixed $precio, mixed $precioEsp, mixed $tipo)
     {
+        $retorno = [
+            'header' => 'HTTP/1.1 200 Producto actualizado correctamente',
+            'message' => 'Producto ' . $nombre . ' actualizado correctamente'
+        ];
         try {
             $query = 'UPDATE productos SET nombre = :nombre, precio = :precio, precioEsp = :precioEsp, tipo = :tipo';
             if ($imagen !== '') {
@@ -138,11 +142,13 @@ class Product extends \Config
             $stmt->bindParam(':precioEsp', $precioEsp);
             $stmt->bindParam(':tipo', $tipo);
             $stmt->execute();
-
-            return 'Producto actualizado correctamente';
         } catch (\PDOException $e) {
-            return 'Error: ' . $e->getMessage();
+            $retorno = [
+                'header' => 'HTTP/1.1 401 Error en la consulta',
+                'message' => 'Error: ' . $e->getMessage()
+            ];
         }
+        return $retorno;
     }
 
 }

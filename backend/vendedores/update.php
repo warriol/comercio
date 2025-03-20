@@ -20,15 +20,14 @@ $idVendedor = $_GET["idVendedor"] ?? null;
 $nombre = $_GET["nombre"] ?? null;
 $telefono = $_GET["telefono"] ?? null;
 
-// Llamar al método sin importar si los valores están vacíos
-$vendedores = new Vendedor();
-
 if ($idVendedor === null) {
     http_response_code(400);
     echo json_encode(["message" => "ID de vendedor no proporcionado"]);
     exit;
 }
 
+// Llamar al método sin importar si los valores están vacíos
+$vendedores = new Vendedor();
 $vendedores->update_vendedor($idVendedor, $nombre, $telefono);
 
 // Devolver la respuesta en formato JSON

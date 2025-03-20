@@ -61,7 +61,6 @@ if (empty($imagen)) {
 
 // Llamar al método sin importar si los valores están vacíos
 $productos = new Product();
-
 $resp = $productos->update_producto($idProducto, $nombre, $imagen, $precio, $precioEsp, $tipo);
 
 // Devolver la respuesta en formato JSON

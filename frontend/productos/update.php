@@ -104,6 +104,7 @@ include_once '../vendor/inicio.html';
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                    document.getElementById('productoForm').reset(); // Reset form
                 })
                 .catch(error => {
                     console.log(error);

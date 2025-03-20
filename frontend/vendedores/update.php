@@ -69,6 +69,7 @@ include_once '../vendor/inicio.html';
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('responseMessage').innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                    document.getElementById('vendedorForm').reset();
                 })
                 .catch(error => {
                     document.getElementById('responseMessage').innerHTML = `<div class="alert alert-danger">Hubo un error al actualizar el vendedor.</div>`;
