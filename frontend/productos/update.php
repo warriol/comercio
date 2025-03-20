@@ -82,7 +82,6 @@ include_once '../vendor/inicio.html';
             const url = new URL('<?= $URL_BASE; ?>productos/update.php');
             const formData = new FormData();
 
-            formData.append('_method', 'PUT');  // Simulamos el método PUT
             formData.append('idProducto', <?= $idProducto; ?>);
             formData.append('nombre', document.getElementById('nombre').value);
             formData.append('precio', document.getElementById('precio').value);
@@ -97,7 +96,6 @@ include_once '../vendor/inicio.html';
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': '<?= $_SESSION['token']; ?>'
                 }
             })

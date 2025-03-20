@@ -26,7 +26,7 @@ if ($idVendedor === null) {
     exit;
 }
 
-// Llamar al método sin importar si los valores están vacíos
+// Llamar al método
 $vendedores = new Vendedor();
 $vendedores->update_vendedor($idVendedor, $nombre, $telefono);
 

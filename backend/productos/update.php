@@ -15,21 +15,19 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     exit;
 }
 
-// Verificar si se simuló un método PUT
-$method = $_POST["_method"] ?? "POST";
-
-if ($method !== "PUT") {
-    http_response_code(400);
-    echo json_encode(["message" => "Método no permitido"]);
-    exit;
-}
-
 // Capturar datos enviados en FormData (los valores vienen en $_POST)
 $idProducto = $_POST["idProducto"] ?? null;
 $nombre = $_POST["nombre"] ?? null;
 $precio = $_POST["precio"] ?? null;
 $precioEsp = $_POST["precioEsp"] ?? null;
 $tipo = $_POST["tipo"] ?? null;
+
+// Validación del ID de producto
+if (!$idProducto) {
+    http_response_code(400);
+    echo json_encode(["message" => "ID de producto no proporcionado" . $_POST["idProducto"]]);
+    exit;
+}
 
 // Manejo de archivo (imagen)
 $imagen = $_FILES["imagen"]["name"] ?? null;
@@ -47,23 +45,15 @@ if ($imagen) {
     $imagen = $new_image_name; // Guarda el nuevo nombre del archivo
 }
 
-// Validación del ID de producto
-if (!$idProducto) {
-    http_response_code(400);
-    echo json_encode(["message" => "ID de producto es requerido"]);
-    exit;
-}
-
 if (empty($imagen)) {
-    // Aquí, puedes obtener el valor actual de la imagen desde la base de datos
-    $imagen = ''; //obtenerImagenActual($idProducto);  // Esta función depende de tu implementación
+    $imagen = ''; //obtenerImagenActual($idProducto);
 }
 
-// Llamar al método sin importar si los valores están vacíos
+// Llamar al método
 $productos = new Product();
 $resp = $productos->update_producto($idProducto, $nombre, $imagen, $precio, $precioEsp, $tipo);
 
 // Devolver la respuesta en formato JSON
 http_response_code(200);
-echo json_encode(["message" => $resp]);
+echo json_encode(["message" =>  $resp['message']]);
 exit;
