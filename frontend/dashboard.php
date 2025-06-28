@@ -134,6 +134,23 @@ include 'session.php';
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
+            <!-- Utiles -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+                   aria-expanded="true" aria-controls="collapseOne">
+                    <i class="fas fa-fw fa-box-open"></i>
+                    <span>Útiles</span>
+                </a>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="utiles/stats.php">Estadísticas</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
