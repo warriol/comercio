@@ -57,20 +57,19 @@ class Stats extends \Config
                             fecha,
                             producto,
                             tipo,
-                            total_vendido,
-                            RANK() OVER (PARTITION BY fecha ORDER BY total_vendido DESC) AS rnk
+                            SUM(cantidad) AS total_vendido,
+                            RANK() OVER (PARTITION BY fecha ORDER BY SUM(cantidad) DESC) AS rnk
                         FROM (
                             -- Ventas
                             SELECT 
                                 v.fechaVenta AS fecha,
                                 p.nombre AS producto,
                                 p.tipo,
-                                SUM(dv.cantidad) AS total_vendido
+                                dv.cantidad
                             FROM ventas v
                             JOIN detalleventas dv ON v.idVenta = dv.idVenta
                             JOIN productos p ON dv.idProducto = p.idProducto
                             WHERE v.fechaVenta >= CURDATE() - INTERVAL 7 DAY
-                            GROUP BY fecha, p.idProducto
                     
                             UNION ALL
                     
@@ -79,14 +78,14 @@ class Stats extends \Config
                                 p2.fechaPedido AS fecha,
                                 pr.nombre AS producto,
                                 pr.tipo,
-                                SUM(dp.cantidad) AS total_vendido
+                                dp.cantidad
                             FROM pedidos p2
                             JOIN detallepedidos dp ON p2.idPedido = dp.idPedido
                             JOIN productos pr ON dp.idProducto = pr.idProducto
                             WHERE p2.fechaPedido >= CURDATE() - INTERVAL 7 DAY
-                            GROUP BY fecha, pr.idProducto
-                        ) AS combinado
-                    ) AS ranked
+                        ) AS combinados
+                        GROUP BY fecha, producto, tipo
+                    ) AS ranking
                     WHERE rnk <= 3
                     ORDER BY fecha DESC, total_vendido DESC";
             $stmt = $this->conn->prepare($query);

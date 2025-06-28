@@ -51,13 +51,13 @@ include_once '../vendor/inicio.html';
                 // Productos más vendidos del último mes
                 const productosMesCtx = document.getElementById('productosMesChart').getContext('2d');
                 new Chart(productosMesCtx, {
-                    type: 'pie',
+                    type: 'bar',
                     data: {
                         labels: data.productos_mes.map(item => item.producto),
                         datasets: [{
                             label: 'Productos más vendidos',
                             data: data.productos_mes.map(item => item.total_vendido),
-                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40']
+                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
                         }]
                     }
                 });
@@ -67,13 +67,11 @@ include_once '../vendor/inicio.html';
                 new Chart(productosDiaCtx, {
                     type: 'bar',
                     data: {
-                        labels: data.productos_dia.map(item => item.dia_semana),
+                        labels: data.productos_dia.map(item => item.producto + ' (' + item.tipo + ')'),
                         datasets: [{
-                            label: 'Producto más vendido por día',
-                            data: data.productos_dia.map(item => item.total_vendido),
-                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                            borderColor: 'rgba(153, 102, 255, 1)',
-                            borderWidth: 1
+                            label: 'Producto más vendido en los últimos 30 días',
+                            data: data.productos_dia.map(item => item.total),
+                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
                         }]
                     }
                 });
