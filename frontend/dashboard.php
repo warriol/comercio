@@ -80,6 +80,22 @@ include 'session.php';
                 </div>
             </li>
 
+            <!-- Proveedores -->
+            <li class="nav-item">
+                <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapseSeven"
+                   aria-expanded="true" aria-controls="collapseSeven">
+                    <i class="fas fa-fw fa-truck"></i>
+                    <span>Proveedores</span>
+                </a>
+                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="proveedores/crear.php">Crear</a>
+                        <a class="collapse-item" href="proveedores/listar.php">Listar</a>
+                        <a class="collapse-item" href="proveedores/update.php">Actualizar</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
