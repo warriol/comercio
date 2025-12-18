@@ -2,8 +2,8 @@
 header("Content-Type: application/json");
 
 $allowed_origins = [
-    "https://frontend.panaderia.warriol.site",
-    "https://backend.panaderia.warriol.site"
+    "https://frontend.panaderia.warriol.com.uy",
+    "https://backend.panaderia.warriol.com.uy"
 ];
 
 if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
