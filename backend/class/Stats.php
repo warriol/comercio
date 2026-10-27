@@ -13,6 +13,19 @@ class Stats extends \Config
         $this->conn = parent::getConnection();
     }
 
+    /**
+     * @api {get} /utiles/stats.php Obtener estadísticas
+     * @apiName get_stats
+     * @apiGroup Estadísticas
+     * @apiVersion 1.0.0
+     * @apiDescription Devuelve ventas y pedidos por mes, productos más vendidos de los últimos 7 días y el resumen de productos de los últimos 30 días.
+     * @apiSuccess {Object} ventas_mes Totales mensuales de ventas, pedidos e ingresos.
+     * @apiSuccess {Object[]} productos_mes Productos más vendidos de los últimos 7 días.
+     * @apiSuccess {Object[]} productos_dia Productos más vendidos de los últimos 30 días.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /utiles/stats.php
+     */
     public function getVentasPorMes()
     {
         try {

@@ -5,7 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = hash('sha512', $_POST['password']);
 
-    $URL_BASE = ($_SERVER['HTTP_HOST'] == 'localhost') ? 'https://localhost/' : 'https://backend.panaderia.warriol.com.uy/';
+    $URL_BASE = ($_SERVER['HTTP_HOST'] == 'localhost')
+        ? 'http://localhost/comercio/backend/'
+        : 'https://backend.panaderia.warriol.com.uy/';
 
     $url = $URL_BASE . 'usuarios/login.php';
 
@@ -26,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo $result['error'];
     } else {
         $_SESSION['user'] = $email;
-        $_SESSION['token'] = 'WILSON';
+        $_SESSION['token'] = $result['token'];
         header('Location: dashboard.php');
         exit();
     }

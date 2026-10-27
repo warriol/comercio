@@ -17,19 +17,21 @@ class Product extends \Config
      * @api {post} /productos/create.php Crear producto
      * @apiName create_producto
      * @apiGroup Productos
-     * @apiVersion 0.1.0
+     * @apiVersion 1.0.0
      * @apiDescription Crea un nuevo producto
      *
      * @apiBody {String} nombre Nombre del producto
-     * @apiBody {String} imagen Imagen del producto
+     * @apiBody {File} imagen Imagen del producto
      * @apiBody {Number} precio Precio del producto
      * @apiBody {Number} precioEsp Precio especial del producto
      * @apiBody {String} tipo Tipo del producto
      *
-     * @apiSuccess {String} Producto {nombre} creado
+     * @apiSuccess {String} message Producto creado correctamente.
      *
-     * @apiError {String} Error: {mensaje de error}
+     * @apiError (400) {String} message Faltan campos obligatorios.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /productos/create.php
      */
     public function create_producto(mixed $nombre, mixed $imagen, mixed $precio, mixed $precioEsp, mixed $tipo)
@@ -53,13 +55,17 @@ class Product extends \Config
      * @api {get} /productos/listar.php Listar productos
      * @apiName listar_producto
      * @apiGroup Productos
-     * @apiVersion 0.1.0
+     * @apiVersion 1.0.0
      * @apiDescription Lista todos los productos
+     *
+     * @apiParam {String} [nombre] Filtra por nombre.
+     * @apiParam {String} [tipo] Filtra por tipo.
      *
      * @apiSuccess {String} JSON con los productos
      *
      * @apiError {String} Error: {mensaje de error}
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /productos/listar.php
      */
     public function listar_producto_todos()
@@ -75,6 +81,19 @@ class Product extends \Config
         }
     }
 
+    /**
+     * @api {get} /productos/listar.php Filtrar productos
+     * @apiName listar_producto_filtro
+     * @apiGroup Productos
+     * @apiVersion 1.0.0
+     * @apiDescription Lista productos que coinciden con nombre o tipo.
+     * @apiParam {String} [nombre] Nombre parcial del producto.
+     * @apiParam {String} [tipo] Tipo del producto.
+     * @apiSuccess {Object[]} productos Productos coincidentes.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /productos/listar.php
+     */
     public function listar_producto_filtro(mixed $nombre, mixed $tipo)
     {
         // $stmt = $this->conn->prepare('SELECT * FROM productos WHERE nombre LIKE CONCAT(\'%\', :nombre, \'%\') OR tipo LIKE CONCAT(\'%\', :tipo, \'%\')');
@@ -92,6 +111,18 @@ class Product extends \Config
         }
     }
 
+    /**
+     * @api {delete} /productos/delete.php?idProducto=1 Eliminar producto
+     * @apiName delete_producto
+     * @apiGroup Productos
+     * @apiVersion 1.0.0
+     * @apiDescription Desactiva un producto.
+     * @apiParam (Query) {Number} [idProducto] ID del producto (obligatorio).
+     * @apiSuccess {String} message Producto eliminado correctamente.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /productos/delete.php
+     */
     public function delete(mixed $idProducto)
     {
         try {
@@ -105,6 +136,18 @@ class Product extends \Config
         }
     }
 
+    /**
+     * @api {get} /productos/getById.php?idProducto=1 Obtener producto
+     * @apiName get_producto
+     * @apiGroup Productos
+     * @apiVersion 1.0.0
+     * @apiDescription Obtiene un producto por su ID.
+     * @apiParam (Query) {Number} [idProducto] ID del producto (obligatorio).
+     * @apiSuccess {Object} producto Producto encontrado.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /productos/getById.php
+     */
     public function getById(mixed $idProducto)
     {
         try {
@@ -119,6 +162,24 @@ class Product extends \Config
         }
     }
 
+    /**
+     * @api {post} /productos/update.php Actualizar producto
+     * @apiName update_producto
+     * @apiGroup Productos
+     * @apiVersion 1.0.0
+     * @apiDescription Actualiza los datos de un producto y opcionalmente su imagen.
+     * @apiBody {Number} idProducto ID del producto.
+     * @apiBody {String} nombre Nombre del producto.
+     * @apiBody {File} [imagen] Nueva imagen del producto.
+     * @apiBody {Number} precio Precio del producto.
+     * @apiBody {Number} precioEsp Precio especial del producto.
+     * @apiBody {String} tipo Tipo del producto.
+     * @apiSuccess {String} message Producto actualizado correctamente.
+     * @apiError (400) {String} message ID de producto no proporcionado.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /productos/update.php
+     */
     public function update_producto(mixed $idProducto, mixed $nombre, string $imagen, mixed $precio, mixed $precioEsp, mixed $tipo)
     {
         $retorno = [

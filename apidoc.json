@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Documentación de la API",
   "title": "Documentación de la API",
-  "url": "https://localhost/comercio/backend",
-  "sampleUrl": false,
+  "url": "http://localhost/comercio/backend",
+  "sampleUrl": "http://localhost/comercio/backend",
   "template": {
     "withCompare": false,
     "withGenerator": false

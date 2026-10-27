@@ -33,8 +33,8 @@ Crear archivo apidoc.json en la raiz del proyecto
   "version": "1.0.0",
   "description": "Documentación de la API",
   "title": "Documentación de la API",
-  "url": "http://localhost/comercio",
-  "sampleUrl": false,
+  "url": "http://localhost/comercio/backend",
+  "sampleUrl": "http://localhost/comercio/backend",
   "template": {
     "withCompare": false,
     "withGenerator": false
@@ -44,12 +44,53 @@ Crear archivo apidoc.json en la raiz del proyecto
 }
 
 ```
+
+`url` define la base que se muestra en la documentación y `sampleUrl` define
+la base que usa el botón de pruebas de cada endpoint. Ambos valores deben
+apuntar a la misma instalación de la API. Para publicar la documentación en
+otro host, cambia únicamente el prefijo en ambos campos, por ejemplo:
+
+```json
+"url": "https://ejemplo.com/comercio/backend",
+"sampleUrl": "https://ejemplo.com/comercio/backend"
+```
+
+Las anotaciones `@api` mantienen solamente la ruta relativa, como
+`/pedidos/entregar.php`, por lo que ApiDoc construye la URL completa usando
+`sampleUrl`.
+
 ```bash
-apidoc -i backend -o apidoc
+apidoc -i backend/class -o apidoc
+
+La documentación se genera a partir de las anotaciones `@api` de las clases
+del backend. Después de modificar un endpoint, vuelve a ejecutar el comando
+para mantener `apidoc/index.html` sincronizado.
 ```
 
 # END POINTS
 Ver documentación de la API en la ruta /apidoc
+
+# AUTENTICACIÓN DE LA API
+
+Primero se debe llamar a `POST /usuarios/login.php` con un JSON como:
+
+```json
+{
+  "email": "usuario@ejemplo.com",
+  "password": "contraseña"
+}
+```
+
+La respuesta exitosa contiene un `token`. En cada endpoint protegido se debe
+enviar ese valor en el encabezado:
+
+```text
+Authorization: <token>
+```
+
+ApiDoc muestra este encabezado en los formularios de prueba de los endpoints
+protegidos. La aplicación web guarda el token devuelto por el login en la
+sesión y lo reutiliza en sus peticiones.
 
 # Base de datos: micomercio
 

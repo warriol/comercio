@@ -11,6 +11,25 @@ class Venta extends \Config
         $this->conn = parent::getConnection();
     }
 
+    /**
+     * @api {post} /ventas/create.php Crear venta
+     * @apiName create_venta
+     * @apiGroup Ventas
+     * @apiVersion 1.0.0
+     * @apiDescription Crea una venta con sus detalles. Los datos se envían como multipart/form-data.
+     * @apiBody {Number} idCliente ID del cliente.
+     * @apiBody {Number} idVendedor ID del vendedor.
+     * @apiBody {String} fechaVenta Fecha de la venta (YYYY-MM-DD).
+     * @apiBody {String} fechaEntrega Fecha de entrega (YYYY-MM-DD).
+     * @apiBody {String} tipoVenta Tipo de venta: contado o credito.
+     * @apiBody {String} comentarios Comentarios de la venta.
+     * @apiBody {String} detalles JSON con los detalles {idProducto, cantidad, subtotal}.
+     * @apiSuccess {String} message Venta creada correctamente.
+     * @apiError (400) {String} message Faltan campos obligatorios.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /ventas/create.php
+     */
     public function create_venta(mixed $idCliente, mixed $idVendedor, string $fechaVenta, string $fechaEntrega, string $tipoVenta, string $comentarios, array $detalles)
     {
         try {
@@ -45,6 +64,19 @@ class Venta extends \Config
         }
     }
 
+    /**
+     * @api {get} /ventas/listar.php?fechaVenta=2026-01-01 Listar ventas por fecha
+     * @apiName listar_ventas
+     * @apiGroup Ventas
+     * @apiVersion 1.0.0
+     * @apiDescription Lista las ventas realizadas en una fecha.
+     * @apiParam (Query) {String} [fechaVenta] Fecha de venta (YYYY-MM-DD) (obligatorio).
+     * @apiSuccess {Object[]} ventas Ventas encontradas.
+     * @apiError (400) {String} message La fecha es obligatoria.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /ventas/listar.php
+     */
     public function listar_ventas_por_fecha(string $fechaVenta)
     {
         try {
@@ -66,6 +98,19 @@ class Venta extends \Config
         }
     }
 
+    /**
+     * @api {get} /ventas/listarVentasCredito.php?idCliente=1 Listar ventas a crédito
+     * @apiName listar_ventas_credito
+     * @apiGroup Ventas
+     * @apiVersion 1.0.0
+     * @apiDescription Lista las ventas a crédito de un cliente.
+     * @apiParam (Query) {Number} [idCliente] ID del cliente (obligatorio).
+     * @apiSuccess {Object[]} ventas Ventas a crédito.
+     * @apiError (400) {String} message El cliente es obligatorio.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /ventas/listarVentasCredito.php
+     */
     public function listar_ventas_credito_por_cliente(int $idCliente)
     {
         try {
@@ -85,6 +130,19 @@ class Venta extends \Config
         }
     }
 
+    /**
+     * @api {post} /ventas/saldarDeuda.php?idVenta=1 Saldar deuda
+     * @apiName saldar_deuda
+     * @apiGroup Ventas
+     * @apiVersion 1.0.0
+     * @apiDescription Cambia una venta a crédito a contado.
+     * @apiParam (Query) {Number} [idVenta] ID de la venta (obligatorio).
+     * @apiSuccess {String} message Deuda saldada correctamente.
+     * @apiError (400) {String} message La venta es obligatoria.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /ventas/saldarDeuda.php
+     */
     public function saldar_deuda(int $idVenta)
     {
         try {

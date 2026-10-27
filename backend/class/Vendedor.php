@@ -28,6 +28,7 @@ class Vendedor extends \Config
      * @apiError {String} header HTTP/1.1 401 Error en la consulta
      * @apiError {String} message Error: {mensaje de error}
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /vendedores/create.php
      */
     public function create_vendedor(mixed $nombre, mixed $telefono)
@@ -52,7 +53,7 @@ class Vendedor extends \Config
 
     /**
      * @api {get} /vendedores/listar.php Listar vendedores
-     * @apiName listar_vendedor
+     * @apiName listar_vendedor_todos
      * @apiGroup Vendedores
      * @apiVersion 0.1.0
      * @apiDescription Lista todos los vendedores o filtra por nombre o teléfono
@@ -66,6 +67,7 @@ class Vendedor extends \Config
      * @apiError {String} header HTTP/1.1 401 Error en la consulta
      * @apiError {String} message Error: {mensaje de error}
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /vendedores/listar.php
      */
     public function listar_vendedor_todos()
@@ -78,7 +80,7 @@ class Vendedor extends \Config
 
     /**
      * @api {get} /vendedores/listar.php Listar vendedores
-     * @apiName listar_vendedor
+     * @apiName listar_vendedor_filtro
      * @apiGroup Vendedores
      * @apiVersion 0.1.0
      * @apiDescription Lista todos los vendedores o filtra por nombre o teléfono
@@ -92,6 +94,7 @@ class Vendedor extends \Config
      * @apiError {String} header HTTP/1.1 401 Error en la consulta
      * @apiError {String} message Error: {mensaje de error}
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /vendedores/listar.php
      */
     public function listar_vendedor_filtro(mixed $nombre, mixed $telefono)
@@ -104,6 +107,18 @@ class Vendedor extends \Config
         return json_encode($resultados);
     }
 
+    /**
+     * @api {get} /vendedores/getById.php?idVendedor=1 Obtener vendedor
+     * @apiName get_vendedor
+     * @apiGroup Vendedores
+     * @apiVersion 1.0.0
+     * @apiDescription Obtiene un vendedor por su ID.
+     * @apiParam (Query) {Number} [idVendedor] ID del vendedor (obligatorio).
+     * @apiSuccess {Object} vendedor Vendedor encontrado.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /vendedores/getById.php
+     */
     public function getById(mixed $idVendedor)
     {
         try {
@@ -117,6 +132,21 @@ class Vendedor extends \Config
         }
     }
 
+    /**
+     * @api {put} /vendedores/update.php?idVendedor=1&nombre=Ana&telefono=099000000 Actualizar vendedor
+     * @apiName update_vendedor
+     * @apiGroup Vendedores
+     * @apiVersion 1.0.0
+     * @apiDescription Actualiza un vendedor. Los datos se envían como parámetros de consulta.
+     * @apiParam (Query) {Number} [idVendedor] ID del vendedor (obligatorio).
+     * @apiParam (Query) {String} [nombre] Nombre del vendedor.
+     * @apiParam (Query) {String} [telefono] Teléfono del vendedor.
+     * @apiSuccess {String} message Vendedor actualizado correctamente.
+     * @apiError (400) {String} message ID de vendedor no proporcionado.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /vendedores/update.php
+     */
     public function update_vendedor(mixed $idVendedor, mixed $nombre, mixed $telefono)
     {
         $retorno = [

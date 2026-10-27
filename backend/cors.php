@@ -2,12 +2,20 @@
 header("Content-Type: application/json");
 
 $allowed_origins = [
+    "http://localhost",
+    "https://localhost",
+    "http://127.0.0.1",
+    "https://127.0.0.1",
     "https://frontend.panaderia.warriol.com.uy",
     "https://backend.panaderia.warriol.com.uy"
 ];
 
-if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
-    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+ $is_local_origin = (bool) preg_match('/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/', $origin);
+
+if ($origin !== '' && (in_array($origin, $allowed_origins, true) || $is_local_origin)) {
+    header("Access-Control-Allow-Origin: " . $origin);
+    header("Vary: Origin");
 }
 
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");

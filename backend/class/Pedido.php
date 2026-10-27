@@ -11,6 +11,25 @@ class Pedido extends \Config
         $this->conn = parent::getConnection();
     }
 
+    /**
+     * @api {post} /pedidos/create.php Crear pedido
+     * @apiName create_pedido
+     * @apiGroup Pedidos
+     * @apiVersion 1.0.0
+     * @apiDescription Crea un pedido con sus detalles. Los datos se envían como multipart/form-data.
+     * @apiBody {Number} idCliente ID del cliente.
+     * @apiBody {Number} idVendedor ID del vendedor.
+     * @apiBody {String} fechaPedido Fecha del pedido (YYYY-MM-DD).
+     * @apiBody {String} fechaEntrega Fecha de entrega (YYYY-MM-DD).
+     * @apiBody {Number} estado Estado inicial del pedido.
+     * @apiBody {String} comentarios Comentarios del pedido.
+     * @apiBody {String} detalles JSON con los detalles {idProducto, cantidad, subtotal}.
+     * @apiSuccess {String} message Pedido creado correctamente.
+     * @apiError (400) {String} message Faltan campos obligatorios.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /pedidos/create.php
+     */
     public function create_pedido(mixed $idCliente, mixed $idVendedor, string $fechaPedido, string $fechaEntrega, string $estado, string $comentarios, array $detalles)
     {
         try {
@@ -45,6 +64,19 @@ class Pedido extends \Config
         }
     }
 
+    /**
+     * @api {get} /pedidos/listar.php?fechaPedido=2026-01-01 Listar pedidos por fecha
+     * @apiName listar_pedidos
+     * @apiGroup Pedidos
+     * @apiVersion 1.0.0
+     * @apiDescription Lista los pedidos cuya fecha de entrega coincide.
+     * @apiParam (Query) {String} [fechaPedido] Fecha de entrega (YYYY-MM-DD) (obligatorio).
+     * @apiSuccess {Object[]} pedidos Pedidos encontrados.
+     * @apiError (400) {String} message La fecha es obligatoria.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /pedidos/listar.php
+     */
     public function listar_pedidos_por_fecha(string $fechaPedido)
     {
         try {
@@ -66,6 +98,17 @@ class Pedido extends \Config
         }
     }
 
+    /**
+     * @api {get} /pedidos/listarFechasPedidos.php Listar fechas de pedidos
+     * @apiName listar_fechas_pedidos
+     * @apiGroup Pedidos
+     * @apiVersion 1.0.0
+     * @apiDescription Lista las fechas de entrega disponibles para pedidos.
+     * @apiSuccess {String[]} fechas Fechas de entrega.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /pedidos/listarFechasPedidos.php
+     */
     public function listar_fechas_pedidos()
     {
         try {
@@ -78,6 +121,19 @@ class Pedido extends \Config
         }
     }
 
+    /**
+     * @api {post} /pedidos/entregar.php Entregar pedido
+     * @apiName entregar_pedido
+     * @apiGroup Pedidos
+     * @apiVersion 1.0.0
+     * @apiDescription Marca un pedido como entregado y crea la venta correspondiente.
+     * @apiBody {Number} idPedido ID del pedido.
+     * @apiSuccess {String} message Pedido entregado y venta creada correctamente.
+     * @apiError (400) {String} message ID de pedido obligatorio.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /pedidos/entregar.php
+     */
     public function entregar_pedido(int $idPedido)
     {
         try {

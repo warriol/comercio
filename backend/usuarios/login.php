@@ -19,7 +19,10 @@ if (isset($data["email"]) && isset($data["password"])) {
         http_response_code(401);
         echo json_encode(['error' => $retorno['error']]);
     } else {
-        echo json_encode(['message' => 'Login successful']);
+        echo json_encode([
+            'message' => 'Login successful',
+            'token' => $retorno['token']
+        ]);
     }
 } else {
     http_response_code(400);

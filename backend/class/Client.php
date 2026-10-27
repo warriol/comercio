@@ -30,6 +30,7 @@ class Client extends \Config
      * @apiError {String} header HTTP/1.1 401 Error en la consulta
      * @apiError {String} message Error: {mensaje de error}
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /clientes/create.php
      */
     public function create_cliente($nombre, $apellido, $telefono, $correo): array
@@ -72,6 +73,7 @@ class Client extends \Config
      * @apiError {String} header HTTP/1.1 401 Error en la consulta
      * @apiError {String} message Error: {mensaje de error}
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /clientes/listar.php
      */
     public function listar_cliente_filtro(mixed $nombre, mixed $apellido, mixed $telefono, mixed $correo)
@@ -104,6 +106,7 @@ class Client extends \Config
      * @apiError {String} header HTTP/1.1 401 Error en la consulta
      * @apiError {String} message Error: {mensaje de error}
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /clientes/listar.php
      */
     public function listar_cliente_todos()
@@ -115,6 +118,17 @@ class Client extends \Config
         return json_encode($result);
     }
 
+    /**
+     * @api {get} /clientes/listarClientesConVentasCredito.php Listar clientes con ventas a crédito
+     * @apiName listar_clientes_con_ventas_credito
+     * @apiGroup Clientes
+     * @apiVersion 1.0.0
+     * @apiDescription Lista los clientes que tienen al menos una venta a crédito pendiente.
+     * @apiSuccess {Object[]} clientes Clientes con ventas a crédito.
+     * @apiError (401) {String} message Falta o es inválido el encabezado Authorization.
+     * @apiUse AuthHeader
+     * @apiSampleRequest /clientes/listarClientesConVentasCredito.php
+     */
     public function listar_clientes_con_ventas_credito()
     {
         $query = "SELECT DISTINCT c.* FROM clientes c
@@ -128,13 +142,13 @@ class Client extends \Config
     }
 
     /**
-     * @api {get} /clientes/getById.php Obtener
+     * @api {get} /clientes/getById.php?idCliente=1 Obtener
      * @apiName getById
      * @apiGroup Clientes
      * @apiVersion 0.1.0
      * @apiDescription Obtiene un cliente por su ID
      *
-     * @apiParam {Number} idCliente ID del cliente
+     * @apiParam (Query) {Number} [idCliente] ID del cliente (obligatorio)
      *
      * @apiSuccess {String} header HTTP/1.1 200 OK
      * @apiSuccess {String} message Cliente encontrado
@@ -142,6 +156,7 @@ class Client extends \Config
      * @apiError {String} header HTTP/1.1 401 Error en la consulta
      * @apiError {String} message Error: {mensaje de error}
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /clientes/getById.php
      */
     public function getById (mixed $idCliente)
@@ -154,13 +169,13 @@ class Client extends \Config
     }
 
     /**
-     * @api {put} /clientes/update.php Actualizar cliente
+     * @api {put} /clientes/update.php?idCliente=1 Actualizar cliente
      * @apiName update_cliente
      * @apiGroup Clientes
      * @apiVersion 0.1.0
      * @apiDescription Actualiza un cliente
      *
-     * @apiParam {Number} idCliente ID del cliente
+     * @apiParam (Query) {Number} [idCliente] ID del cliente (obligatorio)
      * @apiBody {String} nombre Nombre del cliente
      * @apiBody {String} apellido Apellido del cliente
      * @apiBody {String} telefono Teléfono del cliente
@@ -172,6 +187,7 @@ class Client extends \Config
      * @apiError {String} header HTTP/1.1 401 Cliente no actualizado
      * @apiError {String} message Cliente no actualizado
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /clientes/update.php
      */
     public function update_cliente(mixed $idCliente, mixed $nombre, mixed $apellido, mixed $telefono, mixed $correo)
@@ -198,13 +214,13 @@ class Client extends \Config
     }
 
     /**
-     * @api {delete} /clientes/delete.php Eliminar cliente
+     * @api {delete} /clientes/delete.php?idCliente=1 Eliminar cliente
      * @apiName delete_cliente
      * @apiGroup Clientes
      * @apiVersion 0.1.0
      * @apiDescription Elimina un cliente
      *
-     * @apiParam {Number} idCliente ID del cliente
+     * @apiParam (Query) {Number} [idCliente] ID del cliente (obligatorio)
      *
      * @apiSuccess {String} header HTTP/1.1 200 Cliente eliminado correctamente
      * @apiSuccess {String} message Cliente eliminado correctamente
@@ -212,6 +228,7 @@ class Client extends \Config
      * @apiError {String} header HTTP/1.1 401 Cliente no eliminado
      * @apiError {String} message Cliente no eliminado
      *
+     * @apiUse AuthHeader
      * @apiSampleRequest /clientes/delete.php
      */
     public function delete(mixed $idCliente)

@@ -1,5 +1,9 @@
 <?php
     abstract class Config {
+            /**
+             * @apiDefine AuthHeader
+             * @apiHeader {String} Authorization Token devuelto por `/usuarios/login.php`.
+             */
         protected readonly string $key;
         protected readonly string $secretKey;
         private $debug = true;
@@ -106,17 +110,21 @@
         }
 
         public function estaAutenticado(): void {
-            $headers = apache_request_headers();
-            if (!isset($headers['Authorization'])) {
+            $authToken = $_SERVER['HTTP_AUTHORIZATION'] ?? null;
+            if ($authToken === null && function_exists('apache_request_headers')) {
+                $headers = apache_request_headers();
+                $authToken = $headers['Authorization'] ?? $headers['authorization'] ?? null;
+            }
+
+            if ($authToken === null) {
                 http_response_code(401);
                 echo json_encode(["message" => "Unauthorized"]);
                 exit;
             }
 
-            $authToken = $headers['Authorization'];
             $validToken = $this->secretKey;
 
-            if ($authToken !== $validToken) {
+            if (!is_string($validToken) || !hash_equals($validToken, $authToken)) {
                 http_response_code(401);
                 echo json_encode(["message" => "Unauthorized"]);
                 exit;
