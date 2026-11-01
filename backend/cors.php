@@ -19,7 +19,7 @@ if ($origin !== '' && (in_array($origin, $allowed_origins, true) || $is_local_or
 }
 
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Auth-Token");
 
 // Manejo de preflight CORS
 if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {

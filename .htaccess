@@ -1,0 +1,3 @@
+<FilesMatch "^tmp\.log$">
+    Require all denied
+</FilesMatch>

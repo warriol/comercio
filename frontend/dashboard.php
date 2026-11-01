@@ -1,6 +1,8 @@
-<?php
+﻿<?php
 // dashboard.php
 include 'session.php';
+$host = strtolower(explode(':', $_SERVER['HTTP_HOST'] ?? '')[0]);
+$PREFIJO = in_array($host, ['localhost', '127.0.0.1'], true) ? '/comercio/frontend' : '';
 ?>
 <!DOCTYPE html>
 <html lang="esn">
@@ -28,152 +30,7 @@ include 'session.php';
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Panadería <sup>Alemán</sup></div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">Enlaces</div>
-
-            <!-- Ventas -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
-                   aria-expanded="true" aria-controls="collapseSix">
-                    <i class="fas fa-fw fa-calculator"></i>
-                    <span>Ventas</span>
-                </a>
-                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="ventas/crearClientes.php">Para Clientes</a>
-                        <a class="collapse-item" href="ventas/crearComercio.php">Para Comercio</a>
-                        <a class="collapse-item" href="ventas/listarVentas.php">Listar</a>
-                        <a class="collapse-item" href="ventas/listarVentasCredito.php">Saldar Crédito</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Pedidos -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                   aria-expanded="true" aria-controls="collapseFour">
-                    <i class="fas fa-fw fa-clipboard-check"></i>
-                    <span>Pedidos</span>
-                </a>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pedidos/crearClientes.php">Para Clientes</a>
-                        <a class="collapse-item" href="pedidos/crearComercio.php">Para Comercio</a>
-                        <a class="collapse-item" href="pedidos/listarPedidos.php">Listar</a>
-                        <a class="collapse-item" href="pedidos/resumenPedidos.php">Resumen</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Proveedores -->
-            <li class="nav-item">
-                <a class="nav-link collapse" href="#" data-toggle="collapse" data-target="#collapseSeven"
-                   aria-expanded="true" aria-controls="collapseSeven">
-                    <i class="fas fa-fw fa-truck"></i>
-                    <span>Proveedores</span>
-                </a>
-                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="proveedores/crear.php">Crear</a>
-                        <a class="collapse-item" href="proveedores/listar.php">Listar</a>
-                        <a class="collapse-item" href="proveedores/update.php">Actualizar</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Clientes -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-id-badge"></i>
-                    <span>Clientes</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="clientes/crear.php">Crear</a>
-                        <a class="collapse-item" href="clientes/listar.php">Listar</a>
-                        <a class="collapse-item" href="clientes/update.php">Actualizar</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Vendedores -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTree"
-                   aria-expanded="true" aria-controls="collapseTree">
-                    <i class="fas fa-fw fa-people-carry"></i>
-                    <span>Vendedores</span>
-                </a>
-                <div id="collapseTree" class="collapse" aria-labelledby="headingTree" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="vendedores/crear.php">Crear</a>
-                        <a class="collapse-item" href="vendedores/listar.php">Listar</a>
-                        <a class="collapse-item" href="vendedores/update.php">Actualizar</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Productos -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
-                   aria-expanded="true" aria-controls="collapseFive">
-                    <i class="fas fa-fw fa-box-open"></i>
-                    <span>Productos</span>
-                </a>
-                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="productos/crear.php">Crear</a>
-                        <a class="collapse-item" href="productos/listar.php">Listar</a>
-                        <a class="collapse-item" href="productos/update.php">Actualizar</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Utiles -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-                   aria-expanded="true" aria-controls="collapseOne">
-                    <i class="fas fa-fw fa-box-open"></i>
-                    <span>Útiles</span>
-                </a>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utiles/stats.php">Estadísticas</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
+    <?php include __DIR__ . '/vendor/menu.php'; ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -227,7 +84,7 @@ include 'session.php';
                 <div class="container-fluid" id="contendorPrincipal">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Accesos rápidos a: <em>VENTAS</em></h1>
+                    <h1 class="h3 mb-4 text-gray-800">Accesos rÃ¡pidos a: <em>VENTAS</em></h1>
 
                     <div class="card-deck mb-4">
                         <div class="card text-center bg-secondary text-white" style="width: 18rem;">
@@ -271,7 +128,7 @@ include 'session.php';
                     </div>
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Accesos rápidos a: <em>PEDIDOS</em></h1>
+                    <h1 class="h3 mb-4 text-gray-800">Accesos rÃ¡pidos a: <em>PEDIDOS</em></h1>
 
                     <div class="card-deck mb-4">
                         <div class="card text-center bg-primary text-white" style="width: 18rem;">
@@ -349,7 +206,7 @@ include 'session.php';
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Listo para salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">Ã—</span>
                     </button>
                 </div>
                 <div class="modal-body">Si hace clic en el boton salir, cerraras tu sesion.</div>

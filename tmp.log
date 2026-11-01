@@ -1,0 +1,368 @@
+{"timestamp":"2026-10-29T07:02:10+01:00","process":"php","event":"debug.self_test","data":{"email":"demo@example.com","password":"[REDACTED]","token":"[REDACTED]"}}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"login.credentials_invalid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:09:08+01:00","process":"php","event":"frontend.login.rejected","data":{"http_code":401,"error":"Invalid email or password"}}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"login.sql","data":{"user":false}}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"login.credentials_invalid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:13:43+01:00","process":"php","event":"frontend.login.rejected","data":{"http_code":401,"error":"Invalid email or password"}}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"login.sql","data":{"user":false}}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"login.credentials_invalid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:15:58+01:00","process":"php","event":"frontend.login.rejected","data":{"http_code":401,"error":"Invalid email or password"}}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"login.sql","data":{"user":{"id":1,"0":1,"email":"warriol@gmail.com","1":"warriol@gmail.com","password":"[REDACTED]","2":"433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be","nombre":"Wilson Denis","3":"Wilson Denis"}}}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"login.credentials_valid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:17:54+01:00","process":"php","event":"frontend.login.accepted","data":{"http_code":200}}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:18:15+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"login.sql","data":{"user":{"id":1,"0":1,"email":"warriol@gmail.com","1":"warriol@gmail.com","password":"[REDACTED]","2":"433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be","nombre":"Wilson Denis","3":"Wilson Denis","isAdmin":1,"4":1}}}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"login.credentials_valid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:32:28+01:00","process":"php","event":"frontend.login.accepted","data":{"http_code":200}}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"login.sql","data":{"user":{"id":1,"0":1,"email":"warriol@gmail.com","1":"warriol@gmail.com","password":"[REDACTED]","2":"433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be","nombre":"Wilson Denis","3":"Wilson Denis","isAdmin":1,"4":1}}}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"login.credentials_valid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:35:27+01:00","process":"php","event":"frontend.login.accepted","data":{"http_code":200}}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"login.sql","data":{"user":{"id":1,"0":1,"email":"warriol@gmail.com","1":"warriol@gmail.com","password":"[REDACTED]","2":"433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be","nombre":"Wilson Denis","3":"Wilson Denis","isAdmin":1,"4":1}}}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"login.credentials_valid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:40:17+01:00","process":"php","event":"frontend.login.accepted","data":{"http_code":200}}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"login.sql","data":{"user":{"id":1,"0":1,"email":"warriol@gmail.com","1":"warriol@gmail.com","password":"[REDACTED]","2":"433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be","nombre":"Wilson Denis","3":"Wilson Denis","isAdmin":1,"4":1}}}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"login.credentials_valid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:45:19+01:00","process":"php","event":"frontend.login.accepted","data":{"http_code":200}}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"login.sql","data":{"user":{"id":1,"0":1,"email":"warriol@gmail.com","1":"warriol@gmail.com","password":"[REDACTED]","2":"433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be","nombre":"Wilson Denis","3":"Wilson Denis","isAdmin":1,"4":1}}}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"login.credentials_valid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-10-29T07:46:53+01:00","process":"php","event":"frontend.login.accepted","data":{"http_code":200}}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:47:30+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-10-29T07:47:40+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-10-29T07:47:40+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-10-29T07:47:40+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-10-29T07:47:40+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-10-29T07:47:40+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T13:24:54+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T13:24:54+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T13:24:54+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T13:24:54+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T13:24:54+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T13:24:58+01:00","process":"php","event":"frontend.login.connection_error","data":{"curl_error":"","http_code":200}}
+{"timestamp":"2026-11-01T13:30:59+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T13:30:59+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T13:30:59+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T13:30:59+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T13:30:59+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T13:53:45+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T13:53:45+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T13:53:45+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T13:53:45+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T13:53:45+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T13:56:56+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T13:56:56+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T13:56:56+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T13:56:56+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T13:57:58+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T13:57:58+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T13:57:58+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T13:57:58+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"login.database_error","data":{"type":"PDOException","message":"SQLSTATE[42S02]: Base table or view not found: 1932 Table 'micomercio.usuarios' doesn't exist in engine","file":"J:\\programas\\xampp_warriol\\htdocs\\comercio\\backend\\class\\User.php","line":41}}
+{"timestamp":"2026-11-01T14:11:33+01:00","process":"php","event":"frontend.login.rejected","data":{"http_code":401,"error":"SQLSTATE[42S02]: Base table or view not found: 1932 Table 'micomercio.usuarios' doesn't exist in engine"}}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"login.sql","data":{"user":{"id":1,"0":1,"email":"warriol@gmail.com","1":"warriol@gmail.com","password":"[REDACTED]","2":"433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be","nombre":"Wilson Denis","3":"Wilson Denis","isAdmin":1,"4":1}}}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"login.credentials_valid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-11-01T14:16:45+01:00","process":"php","event":"frontend.login.accepted","data":{"http_code":200}}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:16:57+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:16:59+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:16:59+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:16:59+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:16:59+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:16:59+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:17:09+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:17:09+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:17:09+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:17:09+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:17:09+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"frontend.login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"login.request","data":{"email":"warriol@gmail.com","password_length":128}}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"login.sql","data":{"user":{"id":1,"0":1,"email":"warriol@gmail.com","1":"warriol@gmail.com","password":"[REDACTED]","2":"433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be","nombre":"Wilson Denis","3":"Wilson Denis","isAdmin":1,"4":1}}}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"login.credentials_valid","data":{"email":"warriol@gmail.com"}}
+{"timestamp":"2026-11-01T14:21:26+01:00","process":"php","event":"frontend.login.accepted","data":{"http_code":200}}
+{"timestamp":"2026-11-01T14:21:45+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:21:45+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:21:45+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:21:45+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:21:45+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:25:03+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:25:03+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:25:03+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:25:03+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:25:03+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:25:09+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:25:09+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:25:09+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:25:09+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:25:09+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:25:20+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:25:20+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:25:20+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:25:20+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:25:20+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:25:32+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:25:36+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:25:36+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:25:36+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:25:36+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:25:36+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:23+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:23+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:23+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:23+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:23+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:35+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:39+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:26:43+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:26:43+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:26:43+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:26:43+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:26:43+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:28:28+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:35:17+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:35:17+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:35:17+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:35:17+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:35:17+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:36:04+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:36:04+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:36:04+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:36:04+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:36:04+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:37:12+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:37:12+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:37:12+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:37:12+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:37:12+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"INICIO","data":"------------------------------------------------------//////"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Constructor de Config"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Cargando variables de entorno"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conectando a la base de datos"}
+{"timestamp":"2026-11-01T14:37:21+01:00","process":"php","event":"Config","data":"Conexión exitosa a la base de datos"}

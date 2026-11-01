@@ -95,13 +95,21 @@
         {
             $this->debug("Config", "Conectando a la base de datos");
             try	{
-                $this->conexion = new \PDO("mysql:host=".$this->DB_Host.";dbname=".$this->DB_Name."",$this->DB_User,$this->DB_Pass);
+                $this->conexion = new \PDO(
+                    "mysql:host=".$this->DB_Host.";dbname=".$this->DB_Name.";connect_timeout=5",
+                    $this->DB_User,
+                    $this->DB_Pass,
+                    [\PDO::ATTR_TIMEOUT => 5]
+                );
                 $this->conexion->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 $this->conexion->exec("SET CHARACTER SET utf8");
                 $this->debug("Config", "Conexión exitosa a la base de datos");
             } catch (\PDOException $e) {
-                $msj = $e->getMessage();
-                die("Connection failed: " . $msj);
+                \Debug::exception('Config.database_error', $e);
+                http_response_code(500);
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'No se pudo conectar con la base de datos.']);
+                exit;
             }
         }
 
@@ -109,11 +117,19 @@
             return $this->conexion;
         }
 
-        public function estaAutenticado(): void {
-            $authToken = $_SERVER['HTTP_AUTHORIZATION'] ?? null;
+        public function estaAutenticado(): array {
+            $authToken = $_SERVER['HTTP_AUTHORIZATION']
+                ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION']
+                ?? $_SERVER['HTTP_X_AUTH_TOKEN']
+                ?? $_SERVER['REDIRECT_HTTP_X_AUTH_TOKEN']
+                ?? null;
             if ($authToken === null && function_exists('apache_request_headers')) {
-                $headers = apache_request_headers();
-                $authToken = $headers['Authorization'] ?? $headers['authorization'] ?? null;
+                foreach (apache_request_headers() as $name => $value) {
+                    if (strcasecmp($name, 'Authorization') === 0 || strcasecmp($name, 'X-Auth-Token') === 0) {
+                        $authToken = $value;
+                        break;
+                    }
+                }
             }
 
             if ($authToken === null) {
@@ -122,22 +138,109 @@
                 exit;
             }
 
-            $validToken = $this->secretKey;
+            if (preg_match('/^Bearer\s+(.+)$/i', $authToken, $matches)) {
+                $authToken = $matches[1];
+            }
 
-            if (!is_string($validToken) || !hash_equals($validToken, $authToken)) {
+            if (!$this->validarToken($authToken)) {
                 http_response_code(401);
                 echo json_encode(["message" => "Unauthorized"]);
                 exit;
             }
+
+            return $this->obtenerClaims($authToken);
+        }
+
+        public function exigirAdministrador(): array
+        {
+            $claims = $this->estaAutenticado();
+            if ((int) ($claims['isAdmin'] ?? 0) !== 1) {
+                http_response_code(403);
+                echo json_encode(["message" => "Forbidden"]);
+                exit;
+            }
+
+            return $claims;
+        }
+
+        protected function generarToken(array $claims, int $ttl = 3600): string
+        {
+            $issuedAt = time();
+            $header = $this->base64UrlEncode(json_encode([
+                'typ' => 'JWT',
+                'alg' => 'HS256'
+            ], JSON_THROW_ON_ERROR));
+            $payload = $this->base64UrlEncode(json_encode(array_merge($claims, [
+                'iat' => $issuedAt,
+                'exp' => $issuedAt + $ttl
+            ]), JSON_THROW_ON_ERROR));
+            $unsignedToken = $header . '.' . $payload;
+            $signature = hash_hmac('sha256', $unsignedToken, $this->secretKey, true);
+
+            return $unsignedToken . '.' . $this->base64UrlEncode($signature);
+        }
+
+        private function validarToken(string $token): bool
+        {
+            return $this->obtenerClaims($token) !== [];
+        }
+
+        private function obtenerClaims(string $token): array
+        {
+            $parts = explode('.', $token);
+            if (count($parts) !== 3) {
+                return [];
+            }
+
+            [$encodedHeader, $encodedPayload, $encodedSignature] = $parts;
+            $headerJson = $this->base64UrlDecode($encodedHeader);
+            $payloadJson = $this->base64UrlDecode($encodedPayload);
+            $signature = $this->base64UrlDecode($encodedSignature);
+            if ($headerJson === false || $payloadJson === false || $signature === false) {
+                return [];
+            }
+
+            $header = json_decode($headerJson, true);
+            $payload = json_decode($payloadJson, true);
+            if (!is_array($header) || !is_array($payload)) {
+                return [];
+            }
+            if (($header['typ'] ?? null) !== 'JWT' || ($header['alg'] ?? null) !== 'HS256') {
+                return [];
+            }
+            if (!isset($payload['exp']) || !is_numeric($payload['exp']) || (int) $payload['exp'] < time()) {
+                return [];
+            }
+
+            $expectedSignature = hash_hmac(
+                'sha256',
+                $encodedHeader . '.' . $encodedPayload,
+                $this->secretKey,
+                true
+            );
+
+            return hash_equals($expectedSignature, $signature) ? $payload : [];
+        }
+
+        private function base64UrlEncode(string $value): string
+        {
+            return rtrim(strtr(base64_encode($value), '+/', '-_'), '=');
+        }
+
+        private function base64UrlDecode(string $value): string|false
+        {
+            $padding = strlen($value) % 4;
+            if ($padding > 0) {
+                $value .= str_repeat('=', 4 - $padding);
+            }
+
+            return base64_decode(strtr($value, '-_', '+/'), true);
         }
 
         // debug
         public function debug($var, $val = '-'): void{
             if ($this->debug) {
-                $file = fopen("../debug.log", "a") or die("Error creando archivo");
-                $texto = '[' . date("Y-m-d H:i:s") . ']::[' . $var . ']:-> [' . $val . ']';
-                fwrite($file, $texto . PHP_EOL) or die("Error escribiendo en el archivo");
-                fclose($file);
+                \Debug::log((string) $var, $val);
             }
         }
     }

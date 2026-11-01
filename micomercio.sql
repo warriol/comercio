@@ -304,15 +304,18 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `email` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'Nombre de usuario para iniciar sesion.',
   `password` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `nombre` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+  `nombre` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `isAdmin` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `email`, `password`, `nombre`) VALUES
-(0, 'warriol@gmail.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 'Wilson Denis');
+INSERT INTO `usuarios` (`id`, `email`, `password`, `nombre`, `isAdmin`) VALUES
+(1, 'warriol@gmail.com', '433e900c16543b65053d87eecd617576fffe6d210a37fe971107bdeb702a77ef504952f1bc9700d594d399d2b5aaf7b391eccc0b67c540e81a43093f3cb122be', 'Wilson Denis', 1),
+(2, 'delba.arriola@gmail.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 'Delba Arriola', 0),
+(3, 'cesar.weigert.CW@gmail.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 'Cesar Weigert', 0);
 
 -- --------------------------------------------------------
 

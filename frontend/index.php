@@ -14,6 +14,9 @@
                     <h4>Iniciar sesion</h4>
                 </div>
                 <div class="card-body">
+                    <?php if (($_GET['error'] ?? '') === 'session_expired'): ?>
+                        <div class="alert alert-warning">La sesión expiró o el token dejó de ser válido. Inicia sesión nuevamente.</div>
+                    <?php endif; ?>
                     <form id="frmLogin" action="processLogin.php" method="post">
                         <div class="form-group">
                             <label for="email">Escribe el correo electrónico:</label>
